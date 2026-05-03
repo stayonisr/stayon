@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(uipro --version)",
+      "Bash(uipro-cli --version)"
+    ]
+  }
+}
