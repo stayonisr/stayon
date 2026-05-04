@@ -6,7 +6,15 @@
       "Bash(npm --version)",
       "Bash(npm install *)",
       "Bash(uipro --version)",
-      "Bash(uipro-cli --version)"
+      "Bash(uipro-cli --version)",
+      "PowerShell(python --version 2>&1)",
+      "PowerShell(python3 --version 2>&1)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s http://localhost:3000)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(python \".claude/skills/ui-ux-pro-max/scripts/search.py\" \"luxury premium b2b disposable charger emergency power brand\" --design-system -p \"StayOn\")"
     ]
   }
 }
