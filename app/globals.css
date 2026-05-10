@@ -9,12 +9,11 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-heebo);
-  --color-gold: #CA8A04;
-  --color-gold-dark: #92650A;
-  --color-gold-light: #FEF9E7;
-  --color-gold-muted: #FDE68A;
+  --color-brand: #a09072;
+  --color-brand-dark: #6b5f4a;
+  --color-brand-bright: #c0b090;
   --color-ink: #0C0A09;
-  --color-cream: #FAFAF7;
+  --color-cream: #e1e3dc;
 }
 
 html {
@@ -28,8 +27,9 @@ body {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-18px); }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(0.5deg); }
+  66% { transform: translateY(-6px) rotate(-0.5deg); }
 }
 
 @keyframes shimmer {
@@ -38,17 +38,22 @@ body {
 }
 
 @keyframes glow-pulse {
-  0%, 100% { opacity: 0.25; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.1); }
+  0%, 100% { opacity: 0.3; transform: scale(1) translateX(-50%); }
+  50% { opacity: 0.6; transform: scale(1.08) translateX(-50%); }
 }
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .animate-float {
-  animation: float 5s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
 }
 
 .animate-glow-pulse {
@@ -56,23 +61,110 @@ body {
 }
 
 .animate-fade-up {
-  animation: fade-up 0.6s ease forwards;
+  animation: fade-up 0.7s ease forwards;
 }
 
+.animate-fade-in {
+  animation: fade-in 0.5s ease forwards;
+}
+
+/* Shimmer text */
 .gold-shimmer {
-  background: linear-gradient(90deg, #92650A 0%, #CA8A04 25%, #F0C040 50%, #CA8A04 75%, #92650A 100%);
+  background: linear-gradient(90deg, #6b5f4a 0%, #a09072 25%, #c0b090 50%, #a09072 75%, #6b5f4a 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 5s linear infinite;
+  animation: shimmer 4s linear infinite;
 }
 
+/* Static gradient text */
+.gold-text {
+  background: linear-gradient(135deg, #6b5f4a 0%, #a09072 40%, #c0b090 70%, #a09072 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dividers */
 .gold-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, #CA8A04 30%, #CA8A04 70%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, #a09072 25%, #a09072 75%, transparent 100%);
 }
 
-.font-bodoni {
-  font-family: var(--font-bodoni), "Bodoni Moda", Georgia, serif;
+.gold-divider-thin {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(160,144,114,0.4) 50%, transparent 100%);
+}
+
+/* Section styles */
+.section-light {
+  background: #ffffff;
+}
+
+/* Very subtle bege wash — for white sections that need a whisper of warmth */
+.section-wash {
+  background: linear-gradient(180deg, #ffffff 0%, #f5f6f3 100%);
+}
+
+/* Sections with gentle bege gradient */
+.section-cream {
+  background: linear-gradient(160deg, #f4f5f1 0%, #eceee8 50%, #e1e3dc 100%);
+}
+
+.section-dark {
+  background: #0C0A09;
+}
+
+.section-ink {
+  background: #111008;
+}
+
+/* Brand card */
+.gold-card {
+  border: 1px solid rgba(160,144,114,0.25);
+  background: rgba(160,144,114,0.03);
+}
+
+.gold-card:hover {
+  border-color: rgba(160,144,114,0.55);
+  background: rgba(160,144,114,0.06);
+}
+
+/* Font utilities */
+.font-heebo-black {
+  font-family: var(--font-heebo), "Heebo", Arial, sans-serif;
+  font-weight: 900;
+}
+
+/* Buttons */
+.btn-gold {
+  background: #a09072;
+  color: white;
+  font-weight: 800;
+  transition: all 0.2s ease;
+}
+
+.btn-gold:hover {
+  background: #6b5f4a;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(160,144,114,0.4);
+}
+
+.btn-outline-gold {
+  border: 2px solid #a09072;
+  color: #a09072;
+  font-weight: 800;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-gold:hover {
+  background: #a09072;
+  color: white;
+}
+
+/* Product drop shadow */
+.product-shadow {
+  filter: drop-shadow(0 20px 60px rgba(160,144,114,0.25)) drop-shadow(0 4px 16px rgba(0,0,0,0.1));
 }

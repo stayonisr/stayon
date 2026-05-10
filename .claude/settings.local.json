@@ -14,7 +14,11 @@
       "mcp__Claude_Preview__preview_start",
       "Bash(curl -s http://localhost:3000)",
       "mcp__Claude_in_Chrome__tabs_context_mcp",
-      "Bash(python \".claude/skills/ui-ux-pro-max/scripts/search.py\" \"luxury premium b2b disposable charger emergency power brand\" --design-system -p \"StayOn\")"
+      "Bash(python \".claude/skills/ui-ux-pro-max/scripts/search.py\" \"luxury premium b2b disposable charger emergency power brand\" --design-system -p \"StayOn\")",
+      "WebSearch",
+      "Bash(pip install *)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\" -Directory | Select Name; node --version; npm list -g --depth=0 2>$null | head -5)",
+      "Bash(npx next *)"
     ]
   }
 }

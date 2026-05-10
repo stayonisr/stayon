@@ -1,625 +1,451 @@
-import QuoteForm from "./components/QuoteForm";
+import Image from "next/image";
+import Link from "next/link";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import { AnimateIn, StaggerContainer, StaggerItem, HoverCard, GoldLine } from "./components/AnimateIn";
 
 const WHATSAPP = "https://wa.me/972506226569";
-const GOLD = "#CA8A04";
-const BODONI = "var(--font-bodoni), 'Bodoni Moda', Georgia, serif";
+const GOLD = "#a09072";
 
-// ── Icons ─────────────────────────────────────────────────────────────────────
-
-function WhatsAppIcon({ className = "w-5 h-5" }: { className?: string }) {
+function Icon({ d, className = "w-8 h-8" }: { d: string | string[]; className?: string }) {
+  const paths = Array.isArray(d) ? d : [d];
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" aria-hidden="true">
+      {paths.map((p, i) => (
+        <path key={i} strokeLinecap="round" strokeLinejoin="round" d={p} />
+      ))}
     </svg>
   );
 }
 
-function CheckIcon({ className = "w-5 h-5" }: { className?: string }) {
+const ICONS = {
+  bolt: "M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z",
+  battery: "M21 10.5h.375a.375.375 0 01.375.375v2.25a.375.375 0 01-.375.375H21M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z",
+  unplug: "M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z",
+  recycle: "M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99",
+  plane: "M6 12 3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5",
+  music: "M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z",
+  building: "M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21",
+  map: "M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z",
+  graduation: "M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5",
+  bag: "M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z",
+};
+
+function WhatsAppBtn({ text = "הזמינו ב-WhatsApp", large = false }: { text?: string; large?: boolean }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M5 13l4 4L19 7" />
-    </svg>
-  );
-}
-
-function EnvelopeIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
-      <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
-    </svg>
-  );
-}
-
-function ArrowIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
-    </svg>
-  );
-}
-
-// ── Shared ────────────────────────────────────────────────────────────────────
-
-function GoldDivider() {
-  return <div className="gold-divider" />;
-}
-
-function SectionLabel({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
-  return (
-    <p
-      className={`text-xs font-bold uppercase tracking-[0.25em] mb-6 ${light ? "text-amber-400" : "text-amber-600"}`}
+    <a
+      href={WHATSAPP}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`btn-gold inline-flex items-center justify-center gap-3 text-white ${large ? "px-10 py-5 text-lg font-black" : "px-7 py-4 text-base font-bold"}`}
+      style={{ borderRadius: 0 }}
     >
-      {children}
-    </p>
+      <svg className={large ? "w-6 h-6" : "w-5 h-5"} viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+      {text}
+    </a>
   );
 }
 
-// ── Product Visual ────────────────────────────────────────────────────────────
-
-function ProductVisual() {
-  return (
-    <div className="relative flex items-center justify-center py-8 lg:py-0">
-      {/* Warm backdrop so the white charger body is visible */}
-      <div
-        className="absolute inset-0"
-        style={{ background: "radial-gradient(ellipse at center, #FEF3C7 0%, #FEF9E7 40%, transparent 72%)" }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 animate-glow-pulse"
-        style={{ background: "radial-gradient(ellipse at center, rgba(202,138,4,0.18) 0%, transparent 65%)" }}
-        aria-hidden="true"
-      />
-      <img
-        src="/charger.png"
-        alt="מטען חירום StayOn — USB-C חד-פעמי ממותג"
-        width={883}
-        height={376}
-        className="relative w-full max-w-sm lg:max-w-lg animate-float"
-        style={{ filter: "drop-shadow(0 24px 64px rgba(202,138,4,0.3)) drop-shadow(0 4px 20px rgba(0,0,0,0.12))" }}
-      />
-    </div>
-  );
-}
-
-// ── Navbar ────────────────────────────────────────────────────────────────────
-
-function Navbar() {
-  return (
-    <nav
-      className="fixed top-0 inset-x-0 z-50 bg-white"
-      style={{ borderBottom: "1px solid rgba(202,138,4,0.2)", height: "72px" }}
-    >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-full flex items-center justify-between">
-        <a href="#" className="shrink-0 cursor-pointer">
-          <img src="/logo.png" alt="StayOn" className="h-11 w-auto" />
-        </a>
-
-        <div className="hidden md:flex items-center gap-8">
-          {[
-            { href: "#what", label: "מה זה StayOn" },
-            { href: "#how", label: "איך זה עובד" },
-            { href: "#usecases", label: "למי מתאים" },
-            { href: "#quote", label: "הצעת מחיר" },
-          ].map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-stone-500 hover:text-stone-950 font-medium text-sm transition-colors duration-200 cursor-pointer"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        <a
-          href="#quote"
-          className="text-white font-bold text-sm px-6 py-3 transition-all duration-200 cursor-pointer whitespace-nowrap hover:opacity-90"
-          style={{ background: GOLD, borderRadius: 0 }}
-        >
-          הצעת מחיר
-        </a>
-      </div>
-    </nav>
-  );
-}
-
-// ── Hero ──────────────────────────────────────────────────────────────────────
-
-function Hero() {
-  return (
-    <section className="bg-white" style={{ paddingTop: "72px" }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-0 items-center min-h-[calc(100vh-72px)] py-16 lg:py-0">
-
-        {/* Text — renders right in RTL */}
-        <div className="py-8">
-          <SectionLabel>מטען חירום חד-פעמי · ממותג לעסק שלכם</SectionLabel>
-          <h1
-            className="font-black text-stone-950 leading-[1.05] mb-8"
-            style={{ fontSize: "clamp(2.8rem, 6vw, 5.5rem)", letterSpacing: "-0.025em" }}
-          >
-            הטלפון ב-<span className="gold-shimmer">1%</span>.<br />
-            העסק לא<br />
-            מכבה.
-          </h1>
-          <p className="text-stone-500 text-lg leading-relaxed mb-10 max-w-md">
-            מטען USB-C חד-פעמי שמגיע עם הלוגו שלכם — מוכן לשימוש מיידי. בלי כבלים, בלי חיפוש שקע, בלי עיכובים.
-          </p>
-          <div className="flex gap-4 flex-wrap">
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-white font-bold text-base px-8 py-4 transition-all duration-200 cursor-pointer hover:opacity-90"
-              style={{ background: "#0c0a09", borderRadius: 0 }}
-            >
-              <WhatsAppIcon className="w-5 h-5" />
-              דברו איתנו
-            </a>
-            <a
-              href="#quote"
-              className="inline-flex items-center gap-3 text-stone-950 font-bold text-base px-8 py-4 transition-all duration-200 cursor-pointer hover:bg-stone-50"
-              style={{ border: "2px solid #0c0a09", borderRadius: 0 }}
-            >
-              הצעת מחיר
-              <ArrowIcon className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
-
-        {/* Image — renders left in RTL */}
-        <ProductVisual />
-      </div>
-      <GoldDivider />
-    </section>
-  );
-}
-
-// ── Stats Bar ─────────────────────────────────────────────────────────────────
-
-function StatsBar() {
-  const stats = [
-    { number: "500+", label: "עסקים שכבר הזמינו" },
-    { number: "1%", label: "מספיק להציל את הפגישה" },
-    { number: "USB-C", label: "לכל הסמארטפונים החדשים" },
-    { number: "3–5", label: "ימי אספקה בממוצע" },
-  ];
-
-  return (
-    <section className="bg-stone-950 py-14">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 divide-stone-800" style={{ borderTop: "1px solid rgba(202,138,4,0.15)" }}>
-          {stats.map((s, i) => (
-            <div
-              key={i}
-              className="py-8 px-4 text-center"
-              style={{ borderInlineEnd: i < stats.length - 1 ? "1px solid rgba(202,138,4,0.15)" : "none" }}
-            >
-              <div
-                className="font-bold mb-2"
-                style={{ fontFamily: BODONI, fontSize: "clamp(1.8rem, 3vw, 2.5rem)", color: GOLD }}
-              >
-                {s.number}
-              </div>
-              <div className="text-stone-400 text-sm leading-snug">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── What Is It ────────────────────────────────────────────────────────────────
-
-function WhatIsIt() {
-  const features = [
-    "הדפסת לוגו + שם העסק על כל יחידה",
-    "USB-C — תואם לכל הטלפונים המודרניים",
-    "מינימום הזמנה 100 יחידות בלבד",
-    "אספקה תוך 3–5 ימי עסקים",
-    "אריזה ממותגת לפי בחירה",
-  ];
-
-  return (
-    <section id="what" className="bg-white py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          <div>
-            <SectionLabel>מה זה StayOn</SectionLabel>
-            <h2
-              className="font-black text-stone-950 leading-[1.08]"
-              style={{ fontSize: "clamp(2.2rem, 4.5vw, 4rem)", letterSpacing: "-0.02em" }}
-            >
-              פחות ממקל שפתיים.<br />
-              <span className="gold-shimmer">יותר ערך</span><br />
-              מכל ספל מתנה.
-            </h2>
-          </div>
-
-          <div>
-            <p className="text-stone-500 text-lg leading-relaxed mb-6">
-              StayOn הוא מטען חירום חד-פעמי קומפקטי המחובר ישירות לשקע ה-USB-C של הסמארטפון. אין צורך בכבלים, אין צורך בחשמל — פשוט מחברים ומתחילים לטעון.
-            </p>
-            <p className="text-stone-500 text-lg leading-relaxed mb-10">
-              המטען מגיע ממותג עם הלוגו והצבעים של העסק שלכם. מתנת פרסום שאנשים שומרים, משתמשים בה, ומדברים עליה.
-            </p>
-            <ul className="space-y-4">
-              {features.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="mt-0.5 shrink-0" style={{ color: GOLD }}>
-                    <CheckIcon className="w-5 h-5" />
-                  </span>
-                  <span className="text-stone-700 font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── How It Works ──────────────────────────────────────────────────────────────
-
-function HowItWorks() {
-  const steps = [
-    {
-      n: "01",
-      title: "בוחרים כמות ומעצבים",
-      desc: "מגדירים כמות, מעלים לוגו ובוחרים צבעים. הצוות שלנו מכין הדמיה תוך 24 שעות לאישורכם.",
-    },
-    {
-      n: "02",
-      title: "אנחנו מייצרים",
-      desc: "ייצור מהיר באיכות גבוהה. כל מטען עובר בקרת איכות ומגיע ממותג עם הלוגו שלכם.",
-    },
-    {
-      n: "03",
-      title: "אתם מחלקים — הם זוכרים",
-      desc: "מגיע ישירות אליכם, ארוז ומוכן לחלוקה. הלקוחות שלכם לא שוכחים מי נמצא שם ב-1%.",
-    },
-  ];
-
-  return (
-    <section id="how" className="bg-stone-950 py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="mb-16">
-          <SectionLabel light>תהליך פשוט</SectionLabel>
-          <h2
-            className="font-black text-white leading-[1.08]"
-            style={{ fontSize: "clamp(2.2rem, 4.5vw, 4rem)", letterSpacing: "-0.02em" }}
-          >
-            איך זה עובד
-          </h2>
-        </div>
-
-        <div
-          className="grid grid-cols-1 md:grid-cols-3"
-          style={{ borderTop: `1px solid rgba(202,138,4,0.25)` }}
-        >
-          {steps.map((s, i) => (
-            <div
-              key={i}
-              className="pt-10 pb-8"
-              style={{
-                borderBottom: `1px solid rgba(202,138,4,0.2)`,
-                borderInlineStart: i > 0 ? `1px solid rgba(202,138,4,0.15)` : "none",
-                paddingInlineStart: i > 0 ? "2.5rem" : 0,
-                paddingInlineEnd: i < steps.length - 1 ? "2.5rem" : 0,
-              }}
-            >
-              <div
-                className="font-bold mb-8 leading-none opacity-70 select-none"
-                style={{ fontFamily: BODONI, fontSize: "5rem", color: GOLD }}
-              >
-                {s.n}
-              </div>
-              <h3 className="text-white font-black text-xl mb-3">{s.title}</h3>
-              <p className="text-stone-400 leading-relaxed text-base">{s.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── Use Cases ─────────────────────────────────────────────────────────────────
-
-function UseCases() {
-  const cases = [
-    {
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" aria-hidden="true">
-          <path d="M11.25 3v4.046a3 3 0 00-4.277 4.204H1.5v-4.5c0-.932.575-1.736 1.399-2.072A3.002 3.002 0 016 3h5.25zm1.5 0H18a3 3 0 012.601 1.474c.824.336 1.399 1.14 1.399 2.072v4.5h-5.473a3 3 0 00-4.277-4.204V3zM1.5 12.954v4.046a3 3 0 003 3H18a3 3 0 003-3v-4.046c-.367.108-.756.168-1.16.177A4.502 4.502 0 0012 15a4.502 4.502 0 00-7.84-2.87c-.404-.009-.793-.069-1.16-.176z" />
-        </svg>
-      ),
-      title: "מסעדות ובתי קפה",
-      desc: "מתנה לאורחים שתישאר איתם הרבה אחרי הארוחה.",
-    },
-    {
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" aria-hidden="true">
-          <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-        </svg>
-      ),
-      title: "מלונות וספא",
-      desc: "כבוד לאורח שמגיע עם הטלפון גוסס. מתנת קבלת פנים שלא נשכחת.",
-    },
-    {
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" aria-hidden="true">
-          <path fillRule="evenodd" d="M3 6a3 3 0 013-3h12a3 3 0 013 3v12a3 3 0 01-3 3H6a3 3 0 01-3-3V6zm4.5 7.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zm3.75-1.5a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0V12zm2.25-3a.75.75 0 01.75.75v6.75a.75.75 0 01-1.5 0V9.75A.75.75 0 0113.5 9zm3.75-1.5a.75.75 0 00-1.5 0v9a.75.75 0 001.5 0v-9z" clipRule="evenodd" />
-        </svg>
-      ),
-      title: "אירועים ותערוכות",
-      desc: "כולם יצאו עם המטען שלכם בכיס. החשיפה ממשיכה הרבה אחרי האירוע.",
-    },
-    {
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" aria-hidden="true">
-          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
-        </svg>
-      ),
-      title: "קליניקות ומרפאות",
-      desc: "מחווה חמה למטופלים שמגיעים לטיפול.",
-    },
-    {
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" aria-hidden="true">
-          <path fillRule="evenodd" d="M4.5 2.25a.75.75 0 000 1.5v16.5h-.75a.75.75 0 000 1.5h16.5a.75.75 0 000-1.5h-.75V3.75a.75.75 0 000-1.5h-15zM9 6a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5H9zm-.75 3.75A.75.75 0 019 9h1.5a.75.75 0 010 1.5H9a.75.75 0 01-.75-.75zM9 12a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5H9zm3.75-5.25A.75.75 0 0113.5 6H15a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75zM13.5 9a.75.75 0 000 1.5H15A.75.75 0 0015 9h-1.5zm-.75 3.75a.75.75 0 01.75-.75H15a.75.75 0 010 1.5h-1.5a.75.75 0 01-.75-.75z" clipRule="evenodd" />
-        </svg>
-      ),
-      title: "חברות ומשרדים",
-      desc: "מתנה לעובדים ולקוחות שמדברת עסקים — בלי שצריך לומר מילה.",
-    },
-    {
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" aria-hidden="true">
-          <path d="M9.375 3a1.875 1.875 0 000 3.75h1.875v4.5H3.375A1.875 1.875 0 011.5 9.375v-.75c0-1.036.84-1.875 1.875-1.875h3.193A3.375 3.375 0 0112 2.753a3.375 3.375 0 015.432 3.997h3.943c1.035 0 1.875.84 1.875 1.875v.75c0 1.036-.84 1.875-1.875 1.875H13.5v-4.5h1.875a1.875 1.875 0 10-1.875-1.875V6.75h-3V4.875C10.5 3.839 9.66 3 8.625 3H9.375z" />
-          <path d="M11.25 10.5H3v2.25a6 6 0 006 6h2.25v-8.25zM12.75 10.5v8.25H15a6 6 0 006-6V10.5h-8.25z" />
-        </svg>
-      ),
-      title: "סוכנויות פרסום ויח״צ",
-      desc: "כלי הפצה שמגיע לידיים הנכונות ומשאיר רושם.",
-    },
-  ];
-
-  return (
-    <section id="usecases" className="bg-white py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="mb-16">
-          <SectionLabel>למי מתאים</SectionLabel>
-          <h2
-            className="font-black text-stone-950 leading-[1.08]"
-            style={{ fontSize: "clamp(2.2rem, 4.5vw, 4rem)", letterSpacing: "-0.02em" }}
-          >
-            כל עסק שרוצה<br />
-            <span className="gold-shimmer">להיזכר.</span>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {cases.map((c, i) => (
-            <div
-              key={i}
-              className="p-8 transition-all duration-200 group cursor-default"
-              style={{
-                borderTop: "1px solid #e7e5e4",
-                borderInlineEnd: (i % 3 !== 2) ? "1px solid #e7e5e4" : "none",
-              }}
-            >
-              <div
-                className="w-12 h-12 flex items-center justify-center mb-6 transition-colors duration-200"
-                style={{ background: "rgba(202,138,4,0.08)", color: GOLD }}
-              >
-                {c.icon}
-              </div>
-              <h3 className="font-black text-stone-950 text-lg mb-3">{c.title}</h3>
-              <p className="text-stone-500 text-sm leading-relaxed">{c.desc}</p>
-              <div
-                className="mt-6 h-0.5 w-0 group-hover:w-12 transition-all duration-300"
-                style={{ background: GOLD }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── Benefits ──────────────────────────────────────────────────────────────────
-
-function Benefits() {
-  const items = [
-    { title: "טעינה מיידית", desc: "מחברים — ומתחילים לטעון. אפס הגדרות, אפס המתנה." },
-    { title: "לא צריך שקע", desc: "מקור אנרגיה עצמאי מובנה. עובד בכל מקום בכל זמן." },
-    { title: "ממותג מקצועי", desc: "לוגו, צבעים ומסר. ממש כמו שתכננתם אותו." },
-    { title: "USB-C אוניברסלי", desc: "תואם לכל הדגמים החדשים — iPhone ו-Android." },
-    { title: "מינימום נמוך", desc: "מ-100 יחידות בלבד. מתאים לעסקים קטנים וגדולים." },
-    { title: "משלוח מהיר", desc: "3–5 ימי עסקים מרגע אישור ההדמיה." },
-  ];
-
-  return (
-    <section className="py-24 lg:py-32" style={{ background: "#FAFAF7" }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="mb-16">
-          <SectionLabel>למה StayOn</SectionLabel>
-          <h2
-            className="font-black text-stone-950 leading-[1.08]"
-            style={{ fontSize: "clamp(2.2rem, 4.5vw, 4rem)", letterSpacing: "-0.02em" }}
-          >
-            פשוט. מהיר.<br />
-            <span className="gold-shimmer">בלתי נשכח.</span>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
-          {items.map((item, i) => (
-            <div
-              key={i}
-              className="p-8"
-              style={{ border: "1px solid #e7e5e4", marginTop: "-1px", marginInlineEnd: "-1px" }}
-            >
-              <div
-                className="w-1 h-8 mb-6"
-                style={{ background: GOLD }}
-              />
-              <h3 className="font-black text-stone-950 text-xl mb-3">{item.title}</h3>
-              <p className="text-stone-500 leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── Quote Section ─────────────────────────────────────────────────────────────
-
-function QuoteSection() {
-  return (
-    <section id="quote" className="bg-stone-950 py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          <div>
-            <SectionLabel light>הצעת מחיר</SectionLabel>
-            <h2
-              className="font-black text-white leading-[1.08] mb-6"
-              style={{ fontSize: "clamp(2.2rem, 4.5vw, 4rem)", letterSpacing: "-0.02em" }}
-            >
-              קבלו הצעה<br />
-              <span className="gold-shimmer">תוך 24 שעות.</span>
-            </h2>
-            <p className="text-stone-400 text-lg leading-relaxed">
-              מלאו את הפרטים ואנחנו נחזור אליכם עם הצעת מחיר מפורטת ממותאמת לצרכים שלכם.
-            </p>
-
-            <div className="mt-12 space-y-6">
-              {[
-                "הדמיה חינמית תוך 24 שעות",
-                "ייצור ואספקה תוך 3–5 ימים",
-                "מינימום 100 יחידות",
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-4">
-                  <div
-                    className="w-8 h-8 shrink-0 flex items-center justify-center"
-                    style={{ border: `1px solid ${GOLD}`, color: GOLD }}
-                  >
-                    <CheckIcon className="w-4 h-4" />
-                  </div>
-                  <span className="text-stone-300 font-medium">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <QuoteForm />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── Contact Section ───────────────────────────────────────────────────────────
-
-function ContactSection() {
-  return (
-    <section id="contact" className="bg-white py-24">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="text-center mb-16">
-          <SectionLabel>צרו קשר</SectionLabel>
-          <h2
-            className="font-black text-stone-950 leading-tight"
-            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", letterSpacing: "-0.02em" }}
-          >
-            יש לכם שאלה?<br />
-            <span className="gold-shimmer">אנחנו כאן.</span>
-          </h2>
-        </div>
-
-        <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 text-white font-bold text-base px-10 py-5 transition-all duration-200 cursor-pointer hover:opacity-90"
-            style={{ background: "#0c0a09", borderRadius: 0 }}
-          >
-            <WhatsAppIcon className="w-5 h-5" />
-            וואטסאפ — 050-622-6569
-          </a>
-          <a
-            href="mailto:info@stayon.co.il"
-            className="inline-flex items-center justify-center gap-3 text-stone-950 font-bold text-base px-10 py-5 transition-all duration-200 cursor-pointer hover:bg-stone-50"
-            style={{ border: "2px solid #0c0a09", borderRadius: 0 }}
-          >
-            <EnvelopeIcon className="w-5 h-5" />
-            info@stayon.co.il
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── Footer ────────────────────────────────────────────────────────────────────
-
-function Footer() {
-  return (
-    <footer className="bg-stone-950">
-      <GoldDivider />
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <img src="/logo.png" alt="StayOn" className="h-9 w-auto brightness-0 invert opacity-80" />
-
-          <div className="flex items-center gap-8">
-            {[
-              { href: "#what", label: "מה זה StayOn" },
-              { href: "#how", label: "איך זה עובד" },
-              { href: "#usecases", label: "למי מתאים" },
-              { href: "#quote", label: "הצעת מחיר" },
-            ].map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-stone-500 hover:text-stone-300 text-sm transition-colors duration-200 cursor-pointer"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-
-          <p className="text-stone-600 text-sm">
-            © {new Date().getFullYear()} StayOn. כל הזכויות שמורות.
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-// ── Page ──────────────────────────────────────────────────────────────────────
-
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <Navbar />
-      <main>
-        <Hero />
-        <StatsBar />
-        <WhatIsIt />
-        <HowItWorks />
-        <UseCases />
-        <Benefits />
-        <QuoteSection />
-        <ContactSection />
+      <Nav dark={false} />
+      <main className="bg-white">
+
+        {/* ── HERO ─────────────────────────────────────────────────────── */}
+        <section className="relative overflow-hidden bg-white pt-16 min-h-screen flex items-center">
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.035]"
+            style={{
+              backgroundImage: "repeating-linear-gradient(45deg, #CA8A04 0, #CA8A04 1px, transparent 0, transparent 50%)",
+              backgroundSize: "20px 20px",
+            }}
+          />
+          <div className="absolute top-16 left-0 right-0 h-0.5" style={{ background: "linear-gradient(90deg, transparent, #CA8A04, transparent)" }} />
+
+          <div className="max-w-6xl mx-auto px-5 w-full py-16">
+            <div className="grid md:grid-cols-2 gap-10 items-center">
+
+              {/* Text */}
+              <div className="order-2 md:order-1 text-center md:text-right">
+                <AnimateIn variant="fadeUp" delay={0.05}>
+                  <div
+                    className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-xs font-black tracking-[0.3em] uppercase"
+                    style={{ background: "rgba(160,144,114,0.08)", border: "1px solid rgba(160,144,114,0.3)", color: GOLD }}
+                  >
+                    <Icon d={ICONS.bolt} className="w-3.5 h-3.5" />
+                    Portable Single-Use Charger
+                  </div>
+                </AnimateIn>
+
+                <AnimateIn variant="fadeUp" delay={0.15}>
+                  <h1
+                    className="leading-[1.05] mb-6 text-[#0C0A09]"
+                    style={{ fontSize: "clamp(2.8rem, 7vw, 5rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
+                  >
+                    הטלפון שלך
+                    <br />
+                    <span className="gold-shimmer">לא יכבה.</span>
+                  </h1>
+                </AnimateIn>
+
+                <AnimateIn variant="fadeUp" delay={0.25}>
+                  <p className="text-stone-700 text-xl font-bold leading-relaxed mb-3">
+                    מטען USB-C חד-פעמי. תחבר, תטען, תמשיך הלאה.
+                  </p>
+                  <p className="text-stone-500 text-sm font-semibold mb-10 tracking-wide">
+                    No cables · No powerbank · Just plug in and go
+                  </p>
+                </AnimateIn>
+
+                <AnimateIn variant="fadeUp" delay={0.35}>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <WhatsAppBtn large />
+                    <Link
+                      href="/product"
+                      className="btn-outline-gold inline-flex items-center justify-center px-7 py-5 text-base font-black"
+                      style={{ borderRadius: 0 }}
+                    >
+                      פרטים על המוצר
+                    </Link>
+                  </div>
+                </AnimateIn>
+
+                <AnimateIn variant="fadeIn" delay={0.5}>
+                  <div className="flex flex-wrap items-center gap-5 mt-10 justify-center md:justify-start">
+                    {["USB-C מובנה", "1,500 mAh", "אחסון 3 שנים"].map((t) => (
+                      <div key={t} className="flex items-center gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full" style={{ background: GOLD }} />
+                        <span className="text-stone-600 text-sm font-bold">{t}</span>
+                      </div>
+                    ))}
+                  </div>
+                </AnimateIn>
+              </div>
+
+              {/* Product image */}
+              <AnimateIn variant="scaleIn" delay={0.1} duration={0.8} className="order-1 md:order-2 flex items-center justify-center">
+                <div className="relative">
+                  <div
+                    className="absolute inset-0 blur-3xl opacity-30"
+                    style={{
+                      background: "radial-gradient(ellipse, #CA8A04 0%, transparent 70%)",
+                      transform: "scale(0.9) translateY(10%)",
+                    }}
+                  />
+                  <Image
+                    src="/charger.png"
+                    alt="StayOn מטען USB-C חד-פעמי"
+                    width={520}
+                    height={225}
+                    priority
+                    className="relative z-10 w-[280px] sm:w-[380px] md:w-[460px] h-auto animate-float product-shadow"
+                  />
+                </div>
+              </AnimateIn>
+            </div>
+          </div>
+        </section>
+
+        {/* ── THE MOMENT ─────────────────────────────────────────────── */}
+        <section className="section-cream py-24 px-5" style={{ borderTop: "1px solid rgba(160,144,114,0.15)" }}>
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-14 items-center">
+              <AnimateIn variant="slideRight" className="relative order-2 md:order-1">
+                <Image
+                  src="/edited/connected.jpg"
+                  alt="מטען StayOn מחובר לטלפון — סוללה 21%"
+                  width={400}
+                  height={530}
+                  className="w-full max-w-[320px] mx-auto md:mx-0 object-cover"
+                  style={{ boxShadow: "12px 16px 0 rgba(160,144,114,0.15), 4px 6px 30px rgba(0,0,0,0.1)" }}
+                />
+                <div
+                  className="absolute top-5 end-0 translate-x-1/3 flex items-center gap-2 px-4 py-2 text-sm font-black text-white shadow-lg"
+                  style={{ background: GOLD }}
+                >
+                  <Icon d={ICONS.bolt} className="w-4 h-4" />
+                  מטעין עכשיו
+                </div>
+              </AnimateIn>
+
+              <div className="order-1 md:order-2">
+                <AnimateIn variant="fadeUp" delay={0.05}>
+                  <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>The Moment</p>
+                </AnimateIn>
+                <AnimateIn variant="fadeUp" delay={0.15}>
+                  <h2
+                    className="text-[#0C0A09] leading-tight mb-6"
+                    style={{ fontSize: "clamp(2rem, 5vw, 3.2rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
+                  >
+                    הטלפון על&nbsp;1%.
+                    <br />הלב דופק.
+                    <br />אין כבל.
+                  </h2>
+                </AnimateIn>
+                <AnimateIn variant="fadeUp" delay={0.25}>
+                  <p className="text-stone-700 text-lg font-bold leading-relaxed mb-5">
+                    הכרת את הרגע הזה. ב-Waze באמצע דרך, בשדה תעופה, בפגישה חשובה — ואין לאן לפנות.
+                  </p>
+                  <p className="text-stone-500 font-semibold leading-relaxed mb-8">
+                    StayOn הוא מטען USB-C חד-פעמי שנכנס לכיס, לתיק, לארנק. תחבר, תטען, תמשיך.
+                  </p>
+                </AnimateIn>
+                <GoldLine delay={0.3} />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── HOW IT WORKS ────────────────────────────────────────────── */}
+        <section className="py-24 px-5 section-wash">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <AnimateIn variant="fadeUp">
+                <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>How It Works</p>
+                <h2
+                  className="text-[#0C0A09]"
+                  style={{ fontSize: "clamp(1.9rem, 4vw, 3rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
+                >
+                  ארבעה צעדים. עשר שניות.
+                </h2>
+              </AnimateIn>
+            </div>
+
+            <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-6" staggerDelay={0.12}>
+              {[
+                { num: "1", he: "חברו", en: "Plug In", icon: ICONS.bolt, desc: "חברו ישירות לטלפון" },
+                { num: "2", he: "הטעינו", en: "Charge", icon: ICONS.battery, desc: "הטלפון מטעין מיידית" },
+                { num: "3", he: "נתקו", en: "Disconnect", icon: ICONS.unplug, desc: "כשנגמר, פשוט נתקו" },
+                { num: "4", he: "מחזרו", en: "Recycle", icon: ICONS.recycle, desc: "Li-ion — לפח המיחזור" },
+              ].map((step) => (
+                <StaggerItem key={step.num}>
+                  <HoverCard
+                    className="relative flex flex-col items-center text-center p-6 h-full"
+                    style={{ background: "white", border: "1px solid rgba(160,144,114,0.2)", boxShadow: "0 2px 16px rgba(160,144,114,0.05)" } as React.CSSProperties}
+                  >
+                    <div
+                      className="absolute -top-4 right-4 w-8 h-8 flex items-center justify-center text-sm font-black text-white"
+                      style={{ background: GOLD }}
+                    >
+                      {step.num}
+                    </div>
+                    <div className="mb-4 mt-2" style={{ color: GOLD }}>
+                      <Icon d={step.icon} className="w-9 h-9" />
+                    </div>
+                    <p className="text-[#0C0A09] font-black text-lg mb-1">{step.he}</p>
+                    <p className="text-stone-400 text-xs font-bold uppercase tracking-wider mb-2">{step.en}</p>
+                    <p className="text-stone-500 text-xs font-semibold leading-relaxed">{step.desc}</p>
+                  </HoverCard>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+
+        {/* ── LIFESTYLE SPLIT ─────────────────────────────────────────── */}
+        <section className="overflow-hidden" style={{ borderTop: "1px solid rgba(160,144,114,0.12)", borderBottom: "1px solid rgba(160,144,114,0.12)" }}>
+          <div className="grid md:grid-cols-2 min-h-[560px]">
+            <AnimateIn variant="fadeIn" duration={0.8} className="relative overflow-hidden min-h-[360px] md:min-h-0">
+              <Image
+                src="/edited/lifestyle.jpg"
+                alt="אישה מחזיקה StayOn ואייפון"
+                fill
+                className="object-cover object-center scale-105 hover:scale-100 transition-transform duration-700"
+              />
+            </AnimateIn>
+
+            <div className="flex flex-col justify-center px-10 py-16 md:py-20 bg-white">
+              <AnimateIn variant="slideLeft" delay={0.1}>
+                <p className="text-xs font-black tracking-[0.3em] uppercase mb-5" style={{ color: GOLD }}>Always Ready</p>
+                <h2
+                  className="text-[#0C0A09] leading-tight mb-6"
+                  style={{ fontSize: "clamp(1.9rem, 4vw, 2.8rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
+                >
+                  תמיד מוכן.
+                  <br />
+                  <span className="gold-text">גם כשאתה לא.</span>
+                </h2>
+                <p className="text-stone-700 text-lg font-bold leading-relaxed mb-7">
+                  קטן מספיק לכיס מעיל. חזק מספיק להציל את היום.
+                </p>
+              </AnimateIn>
+
+              <StaggerContainer staggerDelay={0.1} containerDelay={0.2}>
+                {[
+                  "USB-C מובנה — ללא כבל נפרד",
+                  "אחסון ארוך טווח — מוכן כשצריך",
+                  "חד-פעמי — אין עלויות נסתרות",
+                  "ממותג — עם הלוגו שלך",
+                ].map((f) => (
+                  <StaggerItem key={f}>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-5 h-5 shrink-0 flex items-center justify-center" style={{ background: GOLD }}>
+                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                      </div>
+                      <span className="text-stone-700 font-bold text-sm">{f}</span>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+            </div>
+          </div>
+        </section>
+
+        {/* ── USE CASES ───────────────────────────────────────────────── */}
+        <section className="py-24 px-5 section-cream">
+          <div className="max-w-5xl mx-auto">
+            <AnimateIn variant="fadeUp" className="text-center mb-14">
+              <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Use Cases</p>
+              <h2
+                className="text-[#0C0A09]"
+                style={{ fontSize: "clamp(1.9rem, 4vw, 3rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
+              >
+                איפה תרצה אותו
+              </h2>
+            </AnimateIn>
+
+            <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-4" staggerDelay={0.08}>
+              {[
+                { icon: ICONS.plane,      title: "שדה תעופה",        desc: "פרידות, לו\"ז צפוף, בלי שקעים" },
+                { icon: ICONS.music,      title: "הופעות ואירועים",   desc: "הטלפון חייב לחיות עד הסוף" },
+                { icon: ICONS.building,   title: "בתי חולים",         desc: "שעות ארוכות, ללא טעינה" },
+                { icon: ICONS.map,        title: "נסיעות ארוכות",     desc: "Waze, מוזיקה, חיבור בלי הפסקה" },
+                { icon: ICONS.graduation, title: "קמפוסים",           desc: "בין שיעורים, ללא שקע בשבילך" },
+                { icon: ICONS.bag,        title: "שופינג",            desc: "ניווט, תשלום, תמונות" },
+              ].map((u) => (
+                <StaggerItem key={u.title}>
+                  <HoverCard
+                    className="p-6 bg-white h-full"
+                    style={{ border: "1px solid rgba(160,144,114,0.2)", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" } as React.CSSProperties}
+                  >
+                    <div className="mb-3" style={{ color: GOLD }}>
+                      <Icon d={u.icon} className="w-8 h-8" />
+                    </div>
+                    <h3 className="text-[#0C0A09] font-black text-base mb-1">{u.title}</h3>
+                    <p className="text-stone-500 text-sm font-semibold leading-relaxed">{u.desc}</p>
+                  </HoverCard>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+
+        {/* ── PRODUCT CLOSEUP ─────────────────────────────────────────── */}
+        <section className="py-24 px-5 section-wash">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-14 items-center">
+              <div>
+                <AnimateIn variant="fadeUp" delay={0.05}>
+                  <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>The Product</p>
+                  <h2
+                    className="text-[#0C0A09] leading-tight mb-6"
+                    style={{ fontSize: "clamp(1.9rem, 4vw, 2.8rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
+                  >
+                    קטן ביד.
+                    <br />
+                    <span className="gold-text">ענק כשצריך.</span>
+                  </h2>
+                  <p className="text-stone-700 font-bold leading-relaxed mb-8">
+                    מחובר ישירות לטלפון — בלי כבל, בלי מתאמים, בלי בזבוז זמן. גודל של מסטיק. ביצועים של חירום.
+                  </p>
+                </AnimateIn>
+                <StaggerContainer className="grid grid-cols-2 gap-3 mb-8" staggerDelay={0.09} containerDelay={0.15}>
+                  {[
+                    { label: "USB-C מובנה", sub: "Built-in connector" },
+                    { label: "1,500 mAh", sub: "Battery capacity" },
+                    { label: "3 שנות אחסון", sub: "Long shelf life" },
+                    { label: "Li-ion", sub: "Recyclable battery" },
+                  ].map((s) => (
+                    <StaggerItem key={s.label}>
+                      <div className="p-4 bg-white" style={{ border: "1px solid rgba(160,144,114,0.2)" }}>
+                        <div className="text-[#0C0A09] font-black text-sm">{s.label}</div>
+                        <div className="text-stone-400 text-xs font-semibold mt-0.5">{s.sub}</div>
+                      </div>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
+                <AnimateIn variant="fadeIn" delay={0.4}>
+                  <Link
+                    href="/product"
+                    className="inline-flex items-center gap-2 font-black text-sm transition-all duration-150 hover:gap-3"
+                    style={{ color: GOLD }}
+                  >
+                    לדף המוצר המלא
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M7 17l9.2-9.2M17 17V7H7" />
+                    </svg>
+                  </Link>
+                </AnimateIn>
+              </div>
+
+              <AnimateIn variant="slideLeft">
+                <div className="relative overflow-hidden" style={{ minHeight: 420 }}>
+                  <Image
+                    src="/edited/hero-hand.jpg"
+                    alt="יד מחזיקה StayOn לצד אייפון"
+                    fill
+                    className="object-cover object-center"
+                  />
+                </div>
+              </AnimateIn>
+            </div>
+          </div>
+        </section>
+
+        {/* ── B2B BANNER ──────────────────────────────────────────────── */}
+        <section className="py-20 px-5" style={{ background: "#0C0A09" }}>
+          <div className="max-w-4xl mx-auto">
+            <AnimateIn variant="fadeUp">
+              <div className="grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                  <p className="text-xs font-black tracking-[0.3em] uppercase mb-4 text-[#c0b090]">For Business · לעסקים</p>
+                  <h2
+                    className="text-white leading-tight mb-4"
+                    style={{ fontSize: "clamp(1.9rem, 4vw, 2.8rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
+                  >
+                    רוצים למכור StayOn?
+                  </h2>
+                  <p className="text-stone-300 font-bold leading-relaxed">
+                    מינימום 100 יחידות · לוגו מותאם · אספקה 3–5 ימים
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link href="/wholesale" className="btn-gold inline-flex items-center justify-center px-8 py-4 font-black text-white" style={{ borderRadius: 0 }}>
+                    לפרטים ולהצעת מחיר
+                  </Link>
+                  <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-outline-gold inline-flex items-center justify-center px-8 py-4 font-black" style={{ borderRadius: 0, borderColor: GOLD, color: GOLD }}>
+                    WhatsApp
+                  </a>
+                </div>
+              </div>
+            </AnimateIn>
+          </div>
+        </section>
+
+        {/* ── FINAL CTA ───────────────────────────────────────────────── */}
+        <section className="py-28 px-5 text-center section-cream" style={{ borderTop: "3px solid #CA8A04" }}>
+          <div className="max-w-2xl mx-auto">
+            <AnimateIn variant="fadeUp">
+              <p className="text-xs font-black tracking-[0.35em] uppercase mb-6" style={{ color: GOLD }}>Stay On — מוכנים?</p>
+              <h2
+                className="text-[#0C0A09] mb-5"
+                style={{ fontSize: "clamp(2.2rem, 6vw, 4rem)", fontWeight: 900, letterSpacing: "-0.03em" }}
+              >
+                תמיד מחובר.{" "}
+                <span className="gold-shimmer">תמיד דלוק.</span>
+              </h2>
+              <p className="text-stone-600 font-bold text-lg mb-10">
+                שלחו הודעה ב-WhatsApp ונחזור אליכם מיידית.
+              </p>
+              <WhatsAppBtn text="דברו איתנו ב-WhatsApp" large />
+            </AnimateIn>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

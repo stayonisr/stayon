@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const GOLD = "#CA8A04";
 
-export default function QuoteForm() {
+export default function QuoteForm({ light = false }: { light?: boolean }) {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -15,9 +15,7 @@ export default function QuoteForm() {
     message: "",
   });
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
@@ -31,22 +29,27 @@ export default function QuoteForm() {
       <div className="text-center py-16">
         <div
           className="w-16 h-16 flex items-center justify-center mx-auto mb-6"
-          style={{ border: `1px solid ${GOLD}`, color: GOLD }}
+          style={{ border: `2px solid ${GOLD}`, color: GOLD }}
         >
-          <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-2xl font-black text-white mb-3">הבקשה נשלחה!</h3>
-        <p className="text-stone-400 text-lg">ניצור איתך קשר תוך 24 שעות עם הצעת מחיר מותאמת.</p>
+        <h3 className={`text-2xl font-black mb-3 ${light ? "text-[#0C0A09]" : "text-white"}`}>הבקשה נשלחה!</h3>
+        <p className={`text-lg font-semibold ${light ? "text-stone-600" : "text-stone-400"}`}>
+          ניצור איתך קשר תוך 24 שעות עם הצעת מחיר מותאמת.
+        </p>
       </div>
     );
   }
 
-  const inputClass =
-    "w-full px-4 py-3 bg-stone-900 border border-stone-700 text-white placeholder-stone-500 focus:outline-none focus:border-amber-500 transition-colors duration-200 text-base";
+  const inputClass = light
+    ? "w-full px-4 py-3 bg-[#FAFAF7] border border-stone-300 text-[#0C0A09] placeholder-stone-400 focus:outline-none focus:border-amber-500 transition-colors duration-200 text-base font-semibold"
+    : "w-full px-4 py-3 bg-stone-900 border border-stone-700 text-white placeholder-stone-500 focus:outline-none focus:border-amber-500 transition-colors duration-200 text-base";
 
-  const labelClass = "block text-sm font-semibold text-stone-300 mb-2";
+  const labelClass = light
+    ? "block text-sm font-black text-[#0C0A09] mb-2"
+    : "block text-sm font-semibold text-stone-300 mb-2";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
@@ -109,7 +112,7 @@ export default function QuoteForm() {
       </div>
       <button
         type="submit"
-        className="w-full py-4 text-white font-black text-lg transition-all duration-200 cursor-pointer hover:opacity-90 focus:outline-none"
+        className="w-full py-4 text-white font-black text-lg transition-all duration-200 cursor-pointer hover:opacity-85"
         style={{ background: GOLD, borderRadius: 0 }}
       >
         שלחו בקשה להצעת מחיר
