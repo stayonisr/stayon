@@ -217,7 +217,7 @@ export default function ProductPage() {
                   </svg>
                   הזמינו ב-WhatsApp
                 </a>
-                <Link href="/wholesale" className="btn-outline-gold inline-flex items-center justify-center px-8 py-4 font-bold" style={{ borderRadius: 0, borderColor: GOLD, color: GOLD }}>
+                <Link href="/wholesale" className="btn-outline-gold inline-flex items-center justify-center px-8 py-4 font-bold cursor-pointer" style={{ borderRadius: 0, borderColor: GOLD }}>
                   לעסקים / סיטונאות
                 </Link>
               </div>

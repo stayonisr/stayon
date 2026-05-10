@@ -105,8 +105,8 @@ export default function HomePage() {
                     <WhatsAppBtn large />
                     <Link
                       href="/product"
-                      className="btn-outline-gold inline-flex items-center justify-center px-7 py-5 text-base font-black"
-                      style={{ borderRadius: 0 }}
+                      className="btn-outline-gold inline-flex items-center justify-center px-7 py-5 text-base font-black cursor-pointer"
+                      style={{ borderRadius: 0, borderColor: GOLD }}
                     >
                       פרטים על המוצר
                     </Link>
@@ -418,7 +418,7 @@ export default function HomePage() {
                   <Link href="/wholesale" className="btn-gold inline-flex items-center justify-center px-8 py-4 font-black text-white" style={{ borderRadius: 0 }}>
                     לפרטים ולהצעת מחיר
                   </Link>
-                  <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-outline-gold inline-flex items-center justify-center px-8 py-4 font-black" style={{ borderRadius: 0, borderColor: GOLD, color: GOLD }}>
+                  <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-outline-gold inline-flex items-center justify-center px-8 py-4 font-black cursor-pointer" style={{ borderRadius: 0, borderColor: GOLD }}>
                     WhatsApp
                   </a>
                 </div>

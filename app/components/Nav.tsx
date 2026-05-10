@@ -28,8 +28,8 @@ export default function Nav({ dark = true }: { dark?: boolean }) {
 
   const bg = dark ? "bg-black/90 border-stone-800" : "bg-white/95 border-stone-200";
   const textColor = dark ? "text-white" : "text-stone-900";
-  const linkActive = dark ? "text-amber-400" : "text-amber-600";
-  const linkDefault = dark ? "text-stone-300 hover:text-white" : "text-stone-600 hover:text-stone-900";
+  const linkActive = dark ? "text-[#c0b090]" : "text-[#a09072]";
+  const linkDefault = dark ? "text-stone-300 hover:text-white" : "text-stone-500 hover:text-[#0C0A09]";
 
   return (
     <header

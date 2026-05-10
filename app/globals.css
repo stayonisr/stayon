@@ -102,14 +102,14 @@ body {
   background: #ffffff;
 }
 
-/* Very subtle bege wash — for white sections that need a whisper of warmth */
+/* Whisper of warmth — barely perceptible */
 .section-wash {
-  background: linear-gradient(180deg, #ffffff 0%, #f5f6f3 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f7f6f2 100%);
 }
 
-/* Sections with gentle bege gradient */
+/* Warm linen gradient — the main textured sections */
 .section-cream {
-  background: linear-gradient(160deg, #f4f5f1 0%, #eceee8 50%, #e1e3dc 100%);
+  background: linear-gradient(160deg, #f3f2ed 0%, #ebe8e0 55%, #e2dfd6 100%);
 }
 
 .section-dark {

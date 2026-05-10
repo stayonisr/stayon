@@ -140,7 +140,7 @@ export function HoverCard({
 }) {
   return (
     <motion.div
-      className={className}
+      className={`cursor-pointer ${className ?? ""}`}
       style={style}
       whileHover={{ y: -liftAmount, transition: { type: "spring", stiffness: 400, damping: 20 } }}
       whileTap={{ scale: 0.98 }}
