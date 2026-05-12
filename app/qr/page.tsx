@@ -4,10 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 
-// ─── Update these handles before going live ───────────────────────────────
+// ─── Contact & social links ───────────────────────────────────────────────
 const WHATSAPP  = "https://wa.me/972506226569?text=היי%20StayOn%2C%20סרקתי%20את%20הQR%20ורוצה%20לדעת%20עוד";
-const INSTAGRAM = "https://instagram.com/stayon_il";
-const TIKTOK    = "https://tiktok.com/@stayon_il";
+const INSTAGRAM = "https://www.instagram.com/stayon_il/";
+const TIKTOK    = "https://www.tiktok.com/@stayon_il";
+const FACEBOOK  = "https://www.facebook.com/stayon.co.il/";
+const EMAIL     = "mailto:hello@stayon.co.il";
 const WEBSITE   = "https://stayon.co.il";
 const GOLD      = "#a09072";
 // ─────────────────────────────────────────────────────────────────────────
@@ -44,6 +46,22 @@ function GlobeIcon() {
   );
 }
 
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6" aria-hidden="true">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="w-6 h-6" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+    </svg>
+  );
+}
+
 const socials = [
   {
     href: INSTAGRAM,
@@ -62,12 +80,29 @@ const socials = [
     color: "white",
   },
   {
+    href: FACEBOOK,
+    label: "Facebook",
+    sub: "stayon.co.il",
+    icon: <FacebookIcon />,
+    bg: "#1877F2",
+    color: "white",
+  },
+  {
     href: WHATSAPP,
     label: "WhatsApp",
-    sub: "דברו איתנו ישירות",
+    sub: "0506226569",
     icon: <WhatsAppIcon />,
     bg: "#25D366",
     color: "white",
+  },
+  {
+    href: EMAIL,
+    label: "מייל",
+    sub: "hello@stayon.co.il",
+    icon: <MailIcon />,
+    bg: "#ffffff",
+    color: "#0C0A09",
+    border: true,
   },
   {
     href: WEBSITE,
