@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Heebo } from "next/font/google";
 import "./globals.css";
+import { SmoothScroll } from "./components/SmoothScroll";
+import { Toaster } from "sonner";
 
 const heebo = Heebo({
   variable: "--font-heebo",
@@ -25,7 +27,22 @@ export default function RootLayout({
       className={`${heebo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-stone-950">
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
+        <Toaster
+          position="bottom-center"
+          toastOptions={{
+            style: {
+              background: "#0C0A09",
+              color: "#e1e3dc",
+              border: "1px solid rgba(160,144,114,0.3)",
+              fontFamily: "var(--font-heebo), Heebo, Arial, sans-serif",
+              fontWeight: 700,
+              direction: "rtl",
+            },
+          }}
+        />
       </body>
     </html>
   );

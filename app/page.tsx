@@ -3,6 +3,8 @@ import Link from "next/link";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import { AnimateIn, StaggerContainer, StaggerItem, HoverCard, GoldLine } from "./components/AnimateIn";
+import { Marquee } from "./components/Marquee";
+import { HomeGSAP } from "./components/HomeGSAP";
 
 const WHATSAPP = "https://wa.me/972506226569";
 const GOLD = "#a09072";
@@ -52,10 +54,11 @@ export default function HomePage() {
   return (
     <>
       <Nav dark={false} />
+      <HomeGSAP />
       <main className="bg-white">
 
         {/* ── HERO ─────────────────────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-white pt-16 min-h-screen flex items-center">
+        <section data-hero-section className="relative overflow-hidden bg-white pt-16 min-h-screen flex items-center">
           <div
             className="absolute inset-0 pointer-events-none opacity-[0.035]"
             style={{
@@ -69,7 +72,7 @@ export default function HomePage() {
             <div className="grid md:grid-cols-2 gap-10 items-center">
 
               {/* Text */}
-              <div className="order-2 md:order-1 text-center md:text-right">
+              <div data-hero-text className="order-2 md:order-1 text-center md:text-right">
                 <AnimateIn variant="fadeUp" delay={0.05}>
                   <div
                     className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-xs font-black tracking-[0.3em] uppercase"
@@ -131,11 +134,12 @@ export default function HomePage() {
                   <div
                     className="absolute inset-0 blur-3xl opacity-30"
                     style={{
-                      background: "radial-gradient(ellipse, #CA8A04 0%, transparent 70%)",
+                      background: "radial-gradient(ellipse, #a09072 0%, transparent 70%)",
                       transform: "scale(0.9) translateY(10%)",
                     }}
                   />
                   <Image
+                    data-hero-product
                     src="/charger.png"
                     alt="StayOn מטען USB-C חד-פעמי"
                     width={520}
@@ -145,6 +149,38 @@ export default function HomePage() {
                   />
                 </div>
               </AnimateIn>
+            </div>
+          </div>
+        </section>
+
+        {/* ── MARQUEE BAND ────────────────────────────────────────────── */}
+        <div className="py-5 overflow-hidden" style={{ background: "#0C0A09", borderTop: "1px solid rgba(160,144,114,0.2)", borderBottom: "1px solid rgba(160,144,114,0.2)" }}>
+          <Marquee
+            items={["Stay Connected", "USB-C חד-פעמי", "1,500 mAh", "Pocket Size", "Emergency Power", "Made for Israel", "Ultra Lightweight", "3 שנות אחסון"]}
+            speed={28}
+            separator="·"
+            className="text-sm font-black tracking-[0.2em] uppercase"
+            style={{ color: GOLD }}
+          />
+        </div>
+
+        {/* ── STATS BAR ───────────────────────────────────────────────── */}
+        <section className="py-14 px-5 section-wash" style={{ borderBottom: "1px solid rgba(160,144,114,0.12)" }}>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {[
+                { num: 1500, suffix: " mAh", label: "קיבולת סוללה" },
+                { num: 3, suffix: " שנים", label: "אחסון ארוך טווח" },
+                { num: 100, suffix: "+", label: "מינימום הזמנה לעסקים" },
+                { num: 10, suffix: "″", label: "זמן חיבור למטען" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="font-black leading-none mb-2 gold-text" style={{ fontSize: "clamp(2.4rem, 6vw, 3.5rem)", letterSpacing: "-0.03em" }}>
+                    <span data-count={s.num}>0</span>{s.suffix}
+                  </div>
+                  <div className="text-stone-500 text-xs font-bold tracking-wide uppercase">{s.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
