@@ -32,7 +32,9 @@
       "Bash(python skills/ui-ux-pro-max/scripts/search.py \"mobile qr landing page product scan social links hebrew rtl elegant minimal premium\" --design-system -p \"StayOn QR\")",
       "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"mobile qr landing page product scan social links hebrew rtl elegant minimal premium\" --design-system -p \"StayOn QR\")",
       "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"animation entrance scroll micro-interaction mobile\" --domain ux)",
-      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"mobile landing page social links cta conversion\" --domain landing)"
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"mobile landing page social links cta conversion\" --domain landing)",
+      "Bash(dir \"C:\\\\Users\\\\ACER\\\\Desktop\\\\stayon\\\\public\\\\mockups\")",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\ACER\\\\Desktop\\\\stayon\\\\public\" -Recurse | Where-Object { !$_.PSIsContainer } | Select-Object FullName | Format-Table -AutoSize)"
     ]
   }
 }

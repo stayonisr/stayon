@@ -57,26 +57,32 @@ export default function HomePage() {
       <HomeGSAP />
       <main className="bg-white">
 
-        {/* ── HERO ─────────────────────────────────────────────────────── */}
-        <section data-hero-section className="relative overflow-hidden bg-white pt-16 min-h-screen flex items-center">
-          <div
-            className="absolute inset-0 pointer-events-none opacity-[0.035]"
-            style={{
-              backgroundImage: "repeating-linear-gradient(45deg, #CA8A04 0, #CA8A04 1px, transparent 0, transparent 50%)",
-              backgroundSize: "20px 20px",
-            }}
-          />
-          <div className="absolute top-16 left-0 right-0 h-0.5" style={{ background: "linear-gradient(90deg, transparent, #CA8A04, transparent)" }} />
+        {/* ── HERO — dark, dramatic ────────────────────────────────────── */}
+        <section data-hero-section className="relative overflow-hidden min-h-screen flex items-center" style={{ background: "#0C0A09" }}>
 
-          <div className="max-w-6xl mx-auto px-5 w-full py-16">
-            <div className="grid md:grid-cols-2 gap-10 items-center">
+          {/* Background: hero-composite full bleed */}
+          <div className="absolute inset-0">
+            <Image
+              src="/edited/hero-composite.jpg"
+              alt=""
+              fill
+              priority
+              className="object-cover object-center opacity-60"
+              sizes="100vw"
+            />
+            {/* Gradient overlay — stronger on text side */}
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to left, rgba(12,10,9,0.2) 0%, rgba(12,10,9,0.75) 55%, rgba(12,10,9,0.92) 100%)" }} />
+          </div>
 
-              {/* Text */}
+          <div className="relative z-10 max-w-6xl mx-auto px-5 w-full py-24 pt-32">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+
+              {/* Text — left side (RTL: right side visually) */}
               <div data-hero-text className="order-2 md:order-1 text-center md:text-right">
                 <AnimateIn variant="fadeUp" delay={0.05}>
                   <div
                     className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-xs font-black tracking-[0.3em] uppercase"
-                    style={{ background: "rgba(160,144,114,0.08)", border: "1px solid rgba(160,144,114,0.3)", color: GOLD }}
+                    style={{ background: "rgba(160,144,114,0.15)", border: "1px solid rgba(160,144,114,0.4)", color: GOLD }}
                   >
                     <Icon d={ICONS.bolt} className="w-3.5 h-3.5" />
                     Portable Single-Use Charger
@@ -85,8 +91,8 @@ export default function HomePage() {
 
                 <AnimateIn variant="fadeUp" delay={0.15}>
                   <h1
-                    className="leading-[1.05] mb-6 text-[#0C0A09]"
-                    style={{ fontSize: "clamp(2.8rem, 7vw, 5rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
+                    className="leading-[1.05] mb-6 text-white"
+                    style={{ fontSize: "clamp(2.8rem, 7vw, 5.2rem)", fontWeight: 900, letterSpacing: "-0.03em" }}
                   >
                     הטלפון שלך
                     <br />
@@ -95,7 +101,7 @@ export default function HomePage() {
                 </AnimateIn>
 
                 <AnimateIn variant="fadeUp" delay={0.25}>
-                  <p className="text-stone-700 text-xl font-bold leading-relaxed mb-3">
+                  <p className="text-stone-300 text-xl font-bold leading-relaxed mb-3">
                     מטען USB-C חד-פעמי. תחבר, תטען, תמשיך הלאה.
                   </p>
                   <p className="text-stone-500 text-sm font-semibold mb-10 tracking-wide">
@@ -108,8 +114,8 @@ export default function HomePage() {
                     <WhatsAppBtn large />
                     <Link
                       href="/product"
-                      className="btn-outline-gold inline-flex items-center justify-center px-7 py-5 text-base font-black cursor-pointer"
-                      style={{ borderRadius: 0, borderColor: GOLD }}
+                      className="inline-flex items-center justify-center px-7 py-5 text-base font-black cursor-pointer transition-all duration-200"
+                      style={{ borderRadius: 0, border: "2px solid rgba(160,144,114,0.5)", color: "rgba(192,176,144,0.9)" }}
                     >
                       פרטים על המוצר
                     </Link>
@@ -120,37 +126,35 @@ export default function HomePage() {
                   <div className="flex flex-wrap items-center gap-5 mt-10 justify-center md:justify-start">
                     {["USB-C מובנה", "1,500 mAh", "אחסון 3 שנים"].map((t) => (
                       <div key={t} className="flex items-center gap-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full" style={{ background: GOLD }} />
-                        <span className="text-stone-600 text-sm font-bold">{t}</span>
+                        <div className="w-1.5 h-1.5" style={{ background: GOLD }} />
+                        <span className="text-stone-400 text-sm font-bold">{t}</span>
                       </div>
                     ))}
                   </div>
                 </AnimateIn>
               </div>
 
-              {/* Product image */}
-              <AnimateIn variant="scaleIn" delay={0.1} duration={0.8} className="order-1 md:order-2 flex items-center justify-center">
+              {/* Product — 3/4 render floating on dark */}
+              <AnimateIn variant="scaleIn" delay={0.1} duration={0.9} className="order-1 md:order-2 flex items-center justify-center">
                 <div className="relative">
-                  <div
-                    className="absolute inset-0 blur-3xl opacity-30"
-                    style={{
-                      background: "radial-gradient(ellipse, #a09072 0%, transparent 70%)",
-                      transform: "scale(0.9) translateY(10%)",
-                    }}
-                  />
+                  <div className="absolute inset-0 blur-3xl opacity-40 pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(192,176,144,0.6) 0%, transparent 70%)", transform: "scale(0.85) translateY(15%)" }} />
                   <Image
                     data-hero-product
-                    src="/charger.png"
+                    src="/renders/product-3q.png"
                     alt="StayOn מטען USB-C חד-פעמי"
-                    width={520}
-                    height={225}
+                    width={600}
+                    height={420}
                     priority
-                    className="relative z-10 w-[280px] sm:w-[380px] md:w-[460px] h-auto animate-float product-shadow"
+                    className="relative z-10 w-[280px] sm:w-[380px] md:w-[480px] h-auto animate-float"
+                    style={{ filter: "drop-shadow(0 0 80px rgba(192,176,144,0.4)) drop-shadow(0 20px 40px rgba(0,0,0,0.5))" }}
                   />
                 </div>
               </AnimateIn>
             </div>
           </div>
+
+          {/* Bottom fade to white */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent, #ffffff)" }} />
         </section>
 
         {/* ── MARQUEE BAND ────────────────────────────────────────────── */}
@@ -179,6 +183,73 @@ export default function HomePage() {
                     <span data-count={s.num}>0</span>{s.suffix}
                   </div>
                   <div className="text-stone-500 text-xs font-bold tracking-wide uppercase">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── HERO-GLOW FULL-BLEED ────────────────────────────────────── */}
+        <section className="relative w-full overflow-hidden" style={{ minHeight: "60vw", maxHeight: 780 }}>
+          <Image
+            src="/renders/hero-glow.png"
+            alt="StayOn — קטן כשצריך, ענק כשצריך"
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          {/* Subtle bottom fade to white */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent, #ffffff)" }} />
+          {/* CTA overlay */}
+          <div className="absolute inset-0 flex items-end justify-center pb-12 px-5">
+            <AnimateIn variant="fadeUp" delay={0.1}>
+              <WhatsAppBtn large text="הזמינו עכשיו ב-WhatsApp" />
+            </AnimateIn>
+          </div>
+        </section>
+
+        {/* ── PRODUCT GALLERY — 7 angles ──────────────────────────────── */}
+        <section className="py-20 px-5 bg-white">
+          <div className="max-w-5xl mx-auto">
+            <AnimateIn variant="fadeUp" className="text-center mb-12">
+              <p className="text-xs font-black tracking-[0.3em] uppercase mb-3" style={{ color: GOLD }}>The Product</p>
+              <h2 className="text-[#0C0A09]" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 900, letterSpacing: "-0.025em" }}>
+                מכל זווית. אותה איכות.
+              </h2>
+            </AnimateIn>
+
+            {/* Angles image — full width showcase */}
+            <AnimateIn variant="scaleIn" delay={0.1}>
+              <div className="relative group cursor-zoom-in overflow-hidden" style={{ background: "#f8f7f5", border: "1px solid rgba(160,144,114,0.15)" }}>
+                <Image
+                  src="/renders/angles.png"
+                  alt="StayOn מטען USB-C — כל הזוויות"
+                  width={1320}
+                  height={880}
+                  className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]"
+                  sizes="(max-width: 768px) 100vw, 1000px"
+                />
+                {/* Corner badge */}
+                <div className="absolute top-4 end-4 px-3 py-1.5 text-xs font-black tracking-[0.2em] uppercase text-white" style={{ background: GOLD }}>
+                  360° View
+                </div>
+              </div>
+            </AnimateIn>
+
+            {/* Feature callouts below gallery */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+              {[
+                { icon: ICONS.bolt,    label: "USB-C מובנה",    sub: "ללא כבל נפרד" },
+                { icon: ICONS.battery, label: "1,500 mAh",      sub: "חיבור חירום מלא" },
+                { icon: ICONS.recycle, label: "Li-ion",         sub: "ניתן למחזור" },
+                { icon: ICONS.plane,   label: "כיסנוני",        sub: "קטן כמו מסטיק" },
+              ].map((f) => (
+                <div key={f.label} className="flex items-center gap-3 p-4" style={{ border: "1px solid rgba(160,144,114,0.15)" }}>
+                  <div style={{ color: GOLD }}><Icon d={f.icon} className="w-5 h-5 shrink-0" /></div>
+                  <div>
+                    <div className="text-[#0C0A09] font-black text-sm">{f.label}</div>
+                    <div className="text-stone-400 text-xs font-semibold">{f.sub}</div>
+                  </div>
                 </div>
               ))}
             </div>
