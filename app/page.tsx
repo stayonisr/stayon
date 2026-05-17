@@ -6,6 +6,7 @@ import { AnimateIn, StaggerContainer, StaggerItem, HoverCard, GoldLine } from ".
 import { Marquee } from "./components/Marquee";
 import { HomeGSAP } from "./components/HomeGSAP";
 import { ProductGallery } from "./components/ProductGallery";
+import ChargeAnimation from "./components/ChargeAnimation";
 
 const WHATSAPP = "https://wa.me/972506226569";
 const GOLD = "#a09072";
@@ -196,18 +197,8 @@ export default function HomePage() {
         <section className="section-cream py-10 md:py-24 px-5" style={{ borderTop: "1px solid rgba(160,144,114,0.15)" }}>
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-14 items-center">
-              <AnimateIn variant="slideRight" className="relative order-2 md:order-1">
-                <Image
-                  src="/edited/connected.jpg"
-                  alt="מטען StayOn מחובר לטלפון"
-                  width={400} height={530}
-                  className="w-full max-w-[320px] mx-auto md:mx-0 object-cover"
-                  style={{ boxShadow: "12px 16px 0 rgba(160,144,114,0.15), 4px 6px 30px rgba(0,0,0,0.1)" }}
-                />
-                <div className="absolute bottom-5 start-4 flex items-center gap-2 px-4 py-2 text-sm font-black text-white shadow-lg" style={{ background: GOLD }}>
-                  <Icon d={ICONS.bolt} className="w-4 h-4" />
-                  מטעין עכשיו
-                </div>
+              <AnimateIn variant="fadeIn" className="relative order-2 md:order-1">
+                <ChargeAnimation />
               </AnimateIn>
 
               <div className="order-1 md:order-2">
