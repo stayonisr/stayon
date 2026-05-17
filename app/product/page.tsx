@@ -144,21 +144,7 @@ export default function ProductPage() {
         {/* ── INSTRUCTIONS ─────────────────────────────────────────── */}
         <section className="py-14 md:py-24 px-5 section-cream">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
-              <div className="relative flex justify-center items-center" style={{ minHeight: 360 }}>
-                {/* Layered gold halo */}
-                <div className="absolute pointer-events-none" style={{ width: 460, height: 360, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(160,144,114,0.28) 0%, transparent 68%)", filter: "blur(46px)" }} />
-                <div className="absolute pointer-events-none" style={{ width: 300, height: 240, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(160,144,114,0.30) 0%, transparent 65%)", filter: "blur(26px)" }} />
-                <Image
-                  src="/photos/product-clean.png"
-                  alt="StayOn — מטען חירום נייד"
-                  width={460}
-                  height={320}
-                  className="relative z-10 w-full max-w-md mx-auto object-contain"
-                  style={{ filter: ["drop-shadow(0 0 36px rgba(160,144,114,0.45))", "drop-shadow(0 18px 40px rgba(160,144,114,0.25))"].join(" ") }}
-                />
-              </div>
-
+            <div className="max-w-2xl mx-auto">
               <div>
                 <AnimateIn variant="fadeUp" delay={0.05}>
                   <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>How It Works</p>
@@ -201,7 +187,7 @@ export default function ProductPage() {
         {/* ── WHY DIFFERENT ───────────────────────────────────────── */}
         <section className="py-14 md:py-24 px-5 bg-white">
           <div className="max-w-5xl mx-auto">
-            <AnimateIn variant="fadeUp" className="text-center mb-14">
+            <AnimateIn variant="fadeUp" className="text-center mb-10 md:mb-14">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Why StayOn</p>
               <h2 className="text-[#0C0A09]" style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 900, letterSpacing: "-0.025em" }}>
                 לא עוד מטען נייד כבד.<br />
@@ -250,13 +236,13 @@ export default function ProductPage() {
         {/* ── SPECS ───────────────────────────────────────────────── */}
         <section className="py-14 md:py-24 px-5 section-wash">
           <div className="max-w-4xl mx-auto">
-            <AnimateIn variant="fadeUp" className="text-center mb-14">
+            <AnimateIn variant="fadeUp" className="text-center mb-10 md:mb-14">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Specifications</p>
               <h2 className="text-[#0C0A09]" style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 900, letterSpacing: "-0.025em" }}>
                 מה מתחת למכסה
               </h2>
             </AnimateIn>
-            <StaggerContainer className="grid md:grid-cols-2 gap-3" staggerDelay={0.07}>
+            <StaggerContainer className="grid grid-cols-2 gap-2 md:gap-3" staggerDelay={0.07}>
               {[
                 { label: "סוג מוצר", value: "מטען חירום חד־פעמי", en: "Single-use emergency charger" },
                 { label: "חיבור", value: "USB-C או Lightning, לפי הדגם", en: "Built-in connector · no cable needed" },

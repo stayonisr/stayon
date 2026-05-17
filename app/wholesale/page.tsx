@@ -264,7 +264,7 @@ export default function WholesalePage() {
         {/* ── WHY STAYON ──────────────────────────────────────────── */}
         <section className="py-14 md:py-24 px-5 section-cream">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-14">
+            <div className="text-center mb-10 md:mb-14">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Why StayOn</p>
               <h2
                 className="text-[#0C0A09]"
@@ -345,7 +345,7 @@ export default function WholesalePage() {
                 <p className="text-stone-500 font-bold text-sm mb-8">
                   בכל מקום שאנשים נמצאים עם טלפון ביד — StayOn הוא הפתרון הנכון.
                 </p>
-                <div className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {[
                     { icon: ICONS.storefront, label: "קיוסקים ונקודות מכירה", desc: "הכנסה נוספת בנפח קטן, ברווח גבוה" },
                     { icon: ICONS.home,       label: "בתי מלון ואתרי נופש",   desc: "חוויית אורח שזוכרים — ומספרים עליה" },
@@ -402,7 +402,7 @@ export default function WholesalePage() {
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>The Process</p>
             <h2
-              className="text-[#0C0A09] mb-14"
+              className="text-[#0C0A09] mb-10 md:mb-14"
               style={{ fontSize: "clamp(1.9rem, 4vw, 3rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
             >
               מבקשה להזמנה —{" "}
