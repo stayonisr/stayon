@@ -47,13 +47,10 @@ export default function Footer() {
             <div className="space-y-3">
               <Link
                 href="/wholesale#quote"
-                className="flex items-center justify-between gap-2 text-sm font-black text-white px-4 py-3 transition-opacity hover:opacity-85"
+                className="flex items-center justify-center gap-2 text-sm font-black text-white px-4 py-3 transition-opacity hover:opacity-85 text-center"
                 style={{ background: GOLD }}
               >
-                הצעת מחיר תוך 24 שעות
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M7 17l9.2-9.2M17 17V7H7" />
-                </svg>
+                לקבלת הצעת מחיר לחצו כאן
               </Link>
               <a
                 href={WHATSAPP}
