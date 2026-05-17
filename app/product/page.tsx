@@ -34,9 +34,9 @@ export default function ProductPage() {
       <main className="bg-white">
 
         {/* ── HERO ─────────────────────────────────────────────────── */}
-        <section className="pt-24 pb-16 px-4 bg-white" style={{ borderBottom: "1px solid rgba(160,144,114,0.15)" }}>
+        <section className="pt-24 pb-10 md:pb-16 px-4 bg-white" style={{ borderBottom: "1px solid rgba(160,144,114,0.15)" }}>
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-14 items-center">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
 
               {/* TEXT COLUMN */}
               <div className="text-center md:text-right">
@@ -123,7 +123,7 @@ export default function ProductPage() {
         </section>
 
         {/* ── THE MOMENT ──────────────────────────────────────────── */}
-        <section className="py-20 px-5" style={{ background: "#0C0A09", borderBottom: `3px solid ${GOLD}` }}>
+        <section className="py-14 md:py-20 px-5" style={{ background: "#0C0A09", borderBottom: `3px solid ${GOLD}` }}>
           <div className="max-w-3xl mx-auto text-center">
             <AnimateIn variant="fadeUp">
               <h2
@@ -142,9 +142,9 @@ export default function ProductPage() {
         </section>
 
         {/* ── INSTRUCTIONS ─────────────────────────────────────────── */}
-        <section className="py-24 px-5 section-cream">
+        <section className="py-14 md:py-24 px-5 section-cream">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-14 items-center">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
               <div className="relative flex justify-center items-center" style={{ minHeight: 360 }}>
                 {/* Layered gold halo */}
                 <div className="absolute pointer-events-none" style={{ width: 460, height: 360, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(160,144,114,0.28) 0%, transparent 68%)", filter: "blur(46px)" }} />
@@ -199,7 +199,7 @@ export default function ProductPage() {
         </section>
 
         {/* ── WHY DIFFERENT ───────────────────────────────────────── */}
-        <section className="py-24 px-5 bg-white">
+        <section className="py-14 md:py-24 px-5 bg-white">
           <div className="max-w-5xl mx-auto">
             <AnimateIn variant="fadeUp" className="text-center mb-14">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Why StayOn</p>
@@ -248,7 +248,7 @@ export default function ProductPage() {
         </section>
 
         {/* ── SPECS ───────────────────────────────────────────────── */}
-        <section className="py-24 px-5 section-wash">
+        <section className="py-14 md:py-24 px-5 section-wash">
           <div className="max-w-4xl mx-auto">
             <AnimateIn variant="fadeUp" className="text-center mb-14">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Specifications</p>
@@ -283,7 +283,7 @@ export default function ProductPage() {
         </section>
 
         {/* ── ANGLES GALLERY ──────────────────────────────────────── */}
-        <section className="py-24 px-5 section-cream">
+        <section className="py-14 md:py-24 px-5 section-cream">
           <div className="max-w-5xl mx-auto">
             <AnimateIn variant="fadeUp" className="text-center mb-12">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Design</p>
@@ -316,7 +316,7 @@ export default function ProductPage() {
         </section>
 
         {/* ── CTA ─────────────────────────────────────────────────── */}
-        <section className="py-20 px-5 text-center" style={{ background: "#0C0A09", borderTop: `3px solid ${GOLD}` }}>
+        <section className="py-14 md:py-20 px-5 text-center" style={{ background: "#0C0A09", borderTop: `3px solid ${GOLD}` }}>
           <div className="max-w-xl mx-auto">
             <AnimateIn variant="fadeUp">
               <h2 className="text-white mb-4" style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 900, letterSpacing: "-0.025em" }}>

@@ -49,9 +49,9 @@ export default function WholesalePage() {
       <main className="bg-white">
 
         {/* ── HERO ─────────────────────────────────────────────────── */}
-        <section className="pt-24 pb-16 px-4" style={{ background: "#0C0A09", borderBottom: `3px solid ${GOLD}` }}>
+        <section className="pt-24 pb-10 md:pb-16 px-4" style={{ background: "#0C0A09", borderBottom: `3px solid ${GOLD}` }}>
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-14 items-center">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
 
               {/* TEXT COLUMN */}
               <div className="text-center md:text-right">
@@ -135,7 +135,7 @@ export default function WholesalePage() {
         </section>
 
         {/* ── THE PITCH ───────────────────────────────────────────── */}
-        <section className="py-20 px-5 bg-white">
+        <section className="py-14 md:py-20 px-5 bg-white">
           <div className="max-w-5xl mx-auto">
             <AnimateIn variant="fadeUp" className="text-center max-w-3xl mx-auto mb-12">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-5" style={{ color: GOLD }}>The Idea</p>
@@ -177,7 +177,7 @@ export default function WholesalePage() {
         </section>
 
         {/* ── CUSTOM BRANDING ─────────────────────────────────────── */}
-        <section className="py-24 px-5 section-wash" style={{ borderTop: "1px solid rgba(160,144,114,0.15)" }}>
+        <section className="py-14 md:py-24 px-5 section-wash" style={{ borderTop: "1px solid rgba(160,144,114,0.15)" }}>
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Custom Branding</p>
@@ -262,7 +262,7 @@ export default function WholesalePage() {
         </section>
 
         {/* ── WHY STAYON ──────────────────────────────────────────── */}
-        <section className="py-24 px-5 section-cream">
+        <section className="py-14 md:py-24 px-5 section-cream">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Why StayOn</p>
@@ -273,7 +273,7 @@ export default function WholesalePage() {
                 למה עסקים בוחרים בנו
               </h2>
             </div>
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {[
                 {
                   icon: ICONS.tag,
@@ -330,9 +330,9 @@ export default function WholesalePage() {
         </section>
 
         {/* ── IDEAL FOR ──────────────────────────────────────────── */}
-        <section className="py-24 px-5 bg-white">
+        <section className="py-14 md:py-24 px-5 bg-white">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-14 items-start">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-14 items-start">
               <div>
                 <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Ideal For</p>
                 <h2
@@ -398,7 +398,7 @@ export default function WholesalePage() {
         </section>
 
         {/* ── PROCESS ─────────────────────────────────────────────── */}
-        <section className="py-24 px-5 section-wash">
+        <section className="py-14 md:py-24 px-5 section-wash">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>The Process</p>
             <h2
@@ -437,9 +437,9 @@ export default function WholesalePage() {
         </section>
 
         {/* ── QUOTE FORM ──────────────────────────────────────────── */}
-        <section className="py-24 px-5 section-cream" style={{ borderTop: "1px solid rgba(160,144,114,0.15)" }}>
+        <section className="py-14 md:py-24 px-5 section-cream" style={{ borderTop: "1px solid rgba(160,144,114,0.15)" }}>
           <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-14">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-14">
               {/* Info */}
               <div>
                 <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Get a Quote</p>
