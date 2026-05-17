@@ -33,7 +33,7 @@ export default function ChargeAnimation() {
   const glow = useTransform(t, [0.08, 0.17, 0.32, 0.86, 0.94], [0, 0.9, 0.45, 0.45, 0]);
 
   return (
-    <div className="relative mx-auto" style={{ width: 300, height: 560 }}>
+    <div className="relative mx-auto overflow-hidden" style={{ width: 300, height: 560 }}>
       {/* ambient halo */}
       <div
         className="absolute pointer-events-none"
@@ -59,7 +59,7 @@ export default function ChargeAnimation() {
           width={CHARGER_W}
           height={CHARGER_H}
           className="w-full h-auto"
-          style={{ filter: "drop-shadow(0 14px 26px rgba(160,144,114,0.38))" }}
+          style={{ filter: "drop-shadow(0 8px 14px rgba(12,10,9,0.16))" }}
         />
       </motion.div>
 
