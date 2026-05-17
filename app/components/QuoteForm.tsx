@@ -6,6 +6,8 @@ const GOLD = "#CA8A04";
 
 export default function QuoteForm({ light = false }: { light?: boolean }) {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({
     name: "",
     business: "",
@@ -19,9 +21,28 @@ export default function QuoteForm({ light = false }: { light?: boolean }) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    if (sending) return;
+    setError("");
+    setSending(true);
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({ ok: false }));
+      if (res.ok && data.ok) {
+        setSubmitted(true);
+      } else {
+        setError("שליחת הבקשה נכשלה. נסו שוב, או פנו אלינו ב-WhatsApp.");
+      }
+    } catch {
+      setError("שגיאת רשת. נסו שוב, או פנו אלינו ב-WhatsApp.");
+    } finally {
+      setSending(false);
+    }
   }
 
   if (submitted) {
@@ -110,12 +131,18 @@ export default function QuoteForm({ light = false }: { light?: boolean }) {
           style={{ borderRadius: 0 }}
         />
       </div>
+      {error && (
+        <p className="text-sm font-bold text-red-600 text-center" role="alert">
+          {error}
+        </p>
+      )}
       <button
         type="submit"
-        className="w-full py-4 text-white font-black text-lg transition-all duration-200 cursor-pointer hover:opacity-85"
+        disabled={sending}
+        className="w-full py-4 text-white font-black text-lg transition-all duration-200 cursor-pointer hover:opacity-85 disabled:opacity-60 disabled:cursor-not-allowed"
         style={{ background: GOLD, borderRadius: 0 }}
       >
-        שלחו בקשה להצעת מחיר
+        {sending ? "שולח..." : "שלחו בקשה להצעת מחיר"}
       </button>
     </form>
   );
