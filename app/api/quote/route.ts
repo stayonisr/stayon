@@ -1,11 +1,9 @@
 import { Resend } from "resend";
 
-// Interim: Resend requires a verified domain to send to hello@stayon.co.il.
-// Until stayon.co.il is verified in Resend, leads go to the Resend account
-// owner's inbox. Reply-To is set to the customer so replies go to them.
-// To upgrade: verify stayon.co.il in Resend, then set TO/FROM to branded.
-const TO = "stayonisr@gmail.com";
-const FROM = "StayOn <onboarding@resend.dev>";
+// stayon.co.il is verified in Resend, so we send from the branded domain
+// to the company inbox. Reply-To is the customer so replies reach them.
+const TO = "hello@stayon.co.il";
+const FROM = "StayOn <noreply@stayon.co.il>";
 
 function esc(v: unknown): string {
   return String(v ?? "")
