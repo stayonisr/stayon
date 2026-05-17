@@ -438,9 +438,8 @@ export default function HomePage() {
                   <p className="text-stone-600 font-semibold leading-relaxed mb-8 flex-1">
                     כל הפרטים, המפרט והדגמים — USB-C ו־Lightning — בדף המוצר.
                   </p>
-                  <Link href="/product" className="btn-gold inline-flex items-center justify-center gap-2 px-7 py-4 font-black text-white self-start" style={{ borderRadius: 0 }}>
+                  <Link href="/product" className="btn-gold flex items-center justify-center w-full px-7 py-4 font-black text-white text-center" style={{ borderRadius: 0 }}>
                     לדף המוצר המלא
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M7 17l9.2-9.2M17 17V7H7" /></svg>
                   </Link>
                 </div>
               </AnimateIn>
