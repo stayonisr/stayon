@@ -62,7 +62,7 @@ export default function HomePage() {
         {/* ── HERO ────────────────────────────────────────────────────── */}
         <section
           data-hero-section
-          className="relative overflow-hidden min-h-screen flex items-center pt-16"
+          className="relative overflow-hidden min-h-[80vh] md:min-h-screen flex items-center pt-16"
           style={{ background: "#ffffff" }}
         >
           {/* Halo glow behind product */}
@@ -76,7 +76,7 @@ export default function HomePage() {
             @keyframes sparkleAnim { 0%,100%{opacity:0;transform:scale(.4) rotate(0deg)} 40%,60%{opacity:1;transform:scale(1) rotate(45deg)} }
           `}</style>
 
-          <div className="max-w-[1300px] mx-auto px-4 md:px-14 w-full py-16">
+          <div className="max-w-[1300px] mx-auto px-4 md:px-14 w-full py-8 md:py-16">
             <div className="grid md:grid-cols-2 gap-0 items-center">
 
               {/* TEXT */}
@@ -374,7 +374,7 @@ export default function HomePage() {
               </h2>
             </AnimateIn>
 
-            <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-4" staggerDelay={0.08}>
+            <StaggerContainer className="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-5 px-5 md:mx-0 md:px-0 pb-4 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" staggerDelay={0.08}>
               {[
                 { icon: ICONS.music,      title: "אירועים ומסיבות",   desc: "כשהטלפון על אחוזים אחרונים ועדיין צריך מצלמה, וואטסאפ, מונית, תשלום או קשר עם חברים" },
                 { icon: ICONS.map,        title: "ים וחוף",           desc: "כשאין שקע קרוב, אין כבל, ואתם עדיין רוצים מוזיקה, תמונות ולהישאר זמינים" },
@@ -386,13 +386,13 @@ export default function HomePage() {
                 { icon: ICONS.battery,    title: "קניות וקניונים",     desc: "ניווט בין חנויות, תשלומים דיגיטליים ושיחות — והסוללה נגמרת באמצע היום" },
                 { icon: ICONS.graduation, title: "סטודנטים וקמפוס",    desc: "יום ארוך מחוץ לבית, הרצאות וספרייה — בלי שקע פנוי בהישג יד" },
               ].map((u) => (
-                <StaggerItem key={u.title}>
-                  <HoverCard className="p-4 md:p-6 bg-white h-full" style={{ border: "1px solid rgba(160,144,114,0.2)", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" } as React.CSSProperties}>
-                    <div className="mb-2 md:mb-3" style={{ color: GOLD }}>
-                      <Icon d={u.icon} className="w-7 h-7 md:w-8 md:h-8" />
+                <StaggerItem key={u.title} className="snap-center shrink-0 w-[78%] sm:w-[44%] md:w-auto">
+                  <HoverCard className="p-6 bg-white h-full" style={{ border: "1px solid rgba(160,144,114,0.2)", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" } as React.CSSProperties}>
+                    <div className="mb-3" style={{ color: GOLD }}>
+                      <Icon d={u.icon} className="w-8 h-8" />
                     </div>
-                    <h3 className="text-[#0C0A09] font-black text-sm md:text-base mb-1">{u.title}</h3>
-                    <p className="hidden md:block text-stone-500 text-sm font-semibold leading-relaxed">{u.desc}</p>
+                    <h3 className="text-[#0C0A09] font-black text-base mb-1">{u.title}</h3>
+                    <p className="text-stone-500 text-sm font-semibold leading-relaxed">{u.desc}</p>
                   </HoverCard>
                 </StaggerItem>
               ))}
