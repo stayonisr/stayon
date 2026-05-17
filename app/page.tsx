@@ -193,7 +193,7 @@ export default function HomePage() {
         </section>
 
         {/* ── THE MOMENT ─────────────────────────────────────────────── */}
-        <section className="section-cream py-14 md:py-24 px-5" style={{ borderTop: "1px solid rgba(160,144,114,0.15)" }}>
+        <section className="section-cream py-10 md:py-24 px-5" style={{ borderTop: "1px solid rgba(160,144,114,0.15)" }}>
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-14 items-center">
               <AnimateIn variant="slideRight" className="relative order-2 md:order-1">
@@ -236,7 +236,7 @@ export default function HomePage() {
         </section>
 
         {/* ── WHY STAYON ──────────────────────────────────────────────── */}
-        <section className="py-14 md:py-24 px-5 bg-white" style={{ borderTop: "1px solid rgba(160,144,114,0.12)" }}>
+        <section className="py-10 md:py-24 px-5 bg-white" style={{ borderTop: "1px solid rgba(160,144,114,0.12)" }}>
           <div className="max-w-5xl mx-auto">
             <AnimateIn variant="fadeUp" className="text-center mb-14">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Why StayOn</p>
@@ -249,7 +249,7 @@ export default function HomePage() {
               </p>
             </AnimateIn>
 
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-4" staggerDelay={0.08}>
+            <StaggerContainer className="grid grid-cols-2 md:grid-cols-3 gap-4" staggerDelay={0.08}>
               {[
                 { icon: ICONS.unplug,  title: "בלי כבל",                 desc: "מתחבר ישירות לטלפון — USB-C או Lightning." },
                 { icon: ICONS.bolt,    title: "בלי שקע קרוב",            desc: "פתרון חירום למצבים שבהם החשמל לא נגיש." },
@@ -273,7 +273,7 @@ export default function HomePage() {
         </section>
 
         {/* ── HOW IT WORKS ────────────────────────────────────────────── */}
-        <section className="py-14 md:py-24 px-5 section-wash">
+        <section className="py-10 md:py-24 px-5 section-wash">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <AnimateIn variant="fadeUp">
@@ -313,7 +313,7 @@ export default function HomePage() {
         </section>
 
         {/* ── ANGLES GALLERY ──────────────────────────────────────────── */}
-        <section className="py-14 md:py-24 px-5 section-cream">
+        <section className="py-10 md:py-24 px-5 section-cream">
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-14 items-start">
               <AnimateIn variant="fadeIn" delay={0.1}>
@@ -365,7 +365,7 @@ export default function HomePage() {
         </section>
 
         {/* ── USE CASES ───────────────────────────────────────────────── */}
-        <section className="py-14 md:py-24 px-5 section-wash">
+        <section className="py-10 md:py-24 px-5 section-wash">
           <div className="max-w-5xl mx-auto">
             <AnimateIn variant="fadeUp" className="text-center mb-14">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>When You Need It</p>
@@ -387,12 +387,12 @@ export default function HomePage() {
                 { icon: ICONS.graduation, title: "סטודנטים וקמפוס",    desc: "יום ארוך מחוץ לבית, הרצאות וספרייה — בלי שקע פנוי בהישג יד" },
               ].map((u) => (
                 <StaggerItem key={u.title}>
-                  <HoverCard className="p-6 bg-white h-full" style={{ border: "1px solid rgba(160,144,114,0.2)", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" } as React.CSSProperties}>
-                    <div className="mb-3" style={{ color: GOLD }}>
-                      <Icon d={u.icon} className="w-8 h-8" />
+                  <HoverCard className="p-4 md:p-6 bg-white h-full" style={{ border: "1px solid rgba(160,144,114,0.2)", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" } as React.CSSProperties}>
+                    <div className="mb-2 md:mb-3" style={{ color: GOLD }}>
+                      <Icon d={u.icon} className="w-7 h-7 md:w-8 md:h-8" />
                     </div>
-                    <h3 className="text-[#0C0A09] font-black text-base mb-1">{u.title}</h3>
-                    <p className="text-stone-500 text-sm font-semibold leading-relaxed">{u.desc}</p>
+                    <h3 className="text-[#0C0A09] font-black text-sm md:text-base mb-1">{u.title}</h3>
+                    <p className="hidden md:block text-stone-500 text-sm font-semibold leading-relaxed">{u.desc}</p>
                   </HoverCard>
                 </StaggerItem>
               ))}
@@ -401,7 +401,7 @@ export default function HomePage() {
         </section>
 
         {/* ── NOT A POWER BANK ────────────────────────────────────────── */}
-        <section className="py-14 md:py-24 px-5 bg-white" style={{ borderTop: "1px solid rgba(160,144,114,0.12)" }}>
+        <section className="py-10 md:py-24 px-5 bg-white" style={{ borderTop: "1px solid rgba(160,144,114,0.12)" }}>
           <div className="max-w-3xl mx-auto text-center">
             <AnimateIn variant="fadeUp">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Not a Power Bank</p>
