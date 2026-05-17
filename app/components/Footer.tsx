@@ -14,17 +14,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           {/* Brand */}
           <div>
-            <Image src="/logo.png" alt="StayOn" width={100} height={36} loading="eager" className="object-contain h-8 w-auto mb-4 brightness-0 invert" />
-            <p className="text-stone-300 text-sm font-bold leading-relaxed max-w-xs">
-              StayOn — מותג ישראלי לטעינת חירום ניידת
-            </p>
-            <p className="text-stone-400 text-sm leading-relaxed max-w-xs mt-2">
-              פתרון טעינה קטן ונגיש לעסקים, אירועים ונקודות מכירה
-            </p>
-            <p className="text-stone-600 text-xs mt-3">
-              זמין ב־USB-C וב־Lightning
-            </p>
-            <div className="flex items-center gap-4 mt-5">
+            <div className="flex items-center gap-3 mb-5">
+              <Image src="/logo.png" alt="StayOn" width={100} height={36} loading="eager" className="object-contain h-8 w-auto brightness-0 invert" />
+              <span className="text-sm font-black tracking-[0.18em] uppercase whitespace-nowrap">
+                <span className="text-stone-300">Stay Powered</span> <span style={{ color: GOLD }}>Stay On</span>
+              </span>
+            </div>
+            <div className="flex items-center gap-4">
               <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-stone-400 hover:text-[#c9b894] transition-colors duration-150">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 2.2c3.2 0 3.6.01 4.9.07 1.2.06 1.8.25 2.2.42.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.17.4.36 1 .42 2.2.06 1.3.07 1.7.07 4.9s-.01 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.17-1 .36-2.2.42-1.3.06-1.7.07-4.9.07s-3.6-.01-4.9-.07c-1.2-.06-1.8-.25-2.2-.42-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.17-.4-.36-1-.42-2.2C2.21 15.6 2.2 15.2 2.2 12s.01-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.17 1-.36 2.2-.42C8.4 2.21 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5.01-4.7.07-1.1.05-1.7.24-2.1.39-.5.2-.9.43-1.3.83-.4.4-.63.8-.83 1.3-.15.4-.34 1-.39 2.1C2.61 9.9 2.6 10.2 2.6 12s.01 2.1.07 3.3c.05 1.1.24 1.7.39 2.1.2.5.43.9.83 1.3.4.4.8.63 1.3.83.4.15 1 .34 2.1.39 1.2.06 1.6.07 4.7.07s3.5-.01 4.7-.07c1.1-.05 1.7-.24 2.1-.39.5-.2.9-.43 1.3-.83.4-.4.63-.8.83-1.3.15-.4.34-1 .39-2.1.06-1.2.07-1.5.07-3.3s-.01-2.1-.07-3.3c-.05-1.1-.24-1.7-.39-2.1-.2-.5-.43-.9-.83-1.3-.4-.4-.8-.63-1.3-.83-.4-.15-1-.34-2.1-.39C15.5 4.01 15.1 4 12 4zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 1.8a3.1 3.1 0 100 6.2 3.1 3.1 0 000-6.2zm5-2.3a1.15 1.15 0 110 2.3 1.15 1.15 0 010-2.3z" />
@@ -93,12 +89,9 @@ export default function Footer() {
 
         <div className="gold-divider mb-6" />
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-3">
+        <div className="text-center md:text-start">
           <p className="text-stone-600 text-xs">
             © {new Date().getFullYear()} StayOn. כל הזכויות שמורות.
-          </p>
-          <p className="text-stone-700 text-xs tracking-wider uppercase">
-            מותג ישראלי · Israeli Brand
           </p>
         </div>
       </div>

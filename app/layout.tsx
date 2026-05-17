@@ -14,7 +14,7 @@ const heebo = Heebo({
 export const metadata: Metadata = {
   title: "StayOn — פתרון טעינת חירום נייד",
   description:
-    "StayOn — מותג ישראלי לטעינת חירום ניידת. פתרון קטן, יפה ונגיש לרגעים שאין כבל ואין שקע קרוב. זמין ב־USB-C וב־Lightning. מתאים לעסקים, אירועים ונקודות מכירה.",
+    "StayOn — פתרון טעינת חירום נייד. קטן, יפה ונגיש לרגעים שאין כבל ואין שקע קרוב. זמין ב־USB-C וב־Lightning. מתאים לעסקים, אירועים ונקודות מכירה.",
 };
 
 export default function RootLayout({

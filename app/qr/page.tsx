@@ -302,7 +302,7 @@ export default function QRPage() {
           />
         </Link>
         <p className="text-stone-600 text-xs font-semibold">
-          © {new Date().getFullYear()} StayOn · מותג ישראלי
+          © {new Date().getFullYear()} StayOn. כל הזכויות שמורות.
         </p>
       </footer>
     </main>

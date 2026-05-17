@@ -165,7 +165,7 @@ export default function HomePage() {
         {/* ── MARQUEE BAND ────────────────────────────────────────────── */}
         <div className="py-5 overflow-hidden" style={{ background: "#0C0A09", borderTop: "1px solid rgba(160,144,114,0.2)", borderBottom: "1px solid rgba(160,144,114,0.2)" }}>
           <Marquee
-            items={["Stay Connected", "USB-C ו-Lightning", "2,500 mAh", "Pocket Size", "Emergency Power", "מותג ישראלי", "Ultra Lightweight", "מוכן מהקופסה", "פתרון טעינה מיידי"]}
+            items={["Stay Connected", "USB-C ו-Lightning", "2,500 mAh", "Pocket Size", "Emergency Power", "Stay Powered", "Ultra Lightweight", "מוכן מהקופסה", "פתרון טעינה מיידי"]}
             speed={28} separator="·"
             className="text-sm font-black tracking-[0.2em] uppercase"
             style={{ color: GOLD }}
