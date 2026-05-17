@@ -437,7 +437,7 @@ export default function WholesalePage() {
         </section>
 
         {/* ── QUOTE FORM ──────────────────────────────────────────── */}
-        <section className="py-14 md:py-24 px-5 section-cream" style={{ borderTop: "1px solid rgba(160,144,114,0.15)" }}>
+        <section id="quote" className="py-14 md:py-24 px-5 section-cream" style={{ borderTop: "1px solid rgba(160,144,114,0.15)", scrollMarginTop: 80 }}>
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8 md:gap-14">
               {/* Info */}
