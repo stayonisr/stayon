@@ -12,11 +12,14 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Image src="/logo.png" alt="StayOn" width={100} height={36} loading="eager" className="object-contain h-8 w-auto mb-4 brightness-0 invert" />
-            <p className="text-stone-400 text-sm leading-relaxed max-w-xs">
-              מטען USB-C חד-פעמי ממותג לעסקים ואנשים פרטיים. טעינה מיידית, בלי כבלים, עם הלוגו שלכם.
+            <p className="text-stone-300 text-sm font-bold leading-relaxed max-w-xs">
+              StayOn — מותג ישראלי לטעינת חירום ניידת
+            </p>
+            <p className="text-stone-400 text-sm leading-relaxed max-w-xs mt-2">
+              פתרון טעינה קטן ונגיש לעסקים, אירועים ונקודות מכירה
             </p>
             <p className="text-stone-600 text-xs mt-3">
-              Portable Single-Use Emergency Charger
+              זמין ב־USB-C וב־Lightning
             </p>
           </div>
 
@@ -55,7 +58,6 @@ export default function Footer() {
                 WhatsApp
               </a>
               <p className="text-stone-500 text-xs">
-                יצרן: StayOn, שובה, ישראל<br />
                 www.stayon.co.il
               </p>
             </div>
@@ -69,7 +71,7 @@ export default function Footer() {
             © {new Date().getFullYear()} StayOn. כל הזכויות שמורות.
           </p>
           <p className="text-stone-700 text-xs tracking-wider uppercase">
-            Made in China · Designed in Israel
+            מותג ישראלי · Israeli Brand
           </p>
         </div>
       </div>

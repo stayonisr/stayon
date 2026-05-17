@@ -18,12 +18,16 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
   background: #ffffff;
   color: #0c0a09;
   font-family: var(--font-heebo), "Heebo", Arial, sans-serif;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 @keyframes float {

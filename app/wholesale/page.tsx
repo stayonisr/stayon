@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "לעסקים — StayOn | סיטונאות ומיתוג",
-  description: "StayOn לעסקים: מטען USB-C חד-פעמי ממותג. מינימום 100 יחידות, אספקה 3-5 ימים.",
+  description: "StayOn לעסקים: מטען חירום נייד ממותג עם הלוגו שלכם. זמין ב-USB-C ו-Lightning. מינימום 100 יחידות, אספקה לפי כמות ומיתוג.",
 };
 
 const WHATSAPP = "https://wa.me/972506226569";
@@ -49,48 +49,220 @@ export default function WholesalePage() {
       <main className="bg-white">
 
         {/* ── HERO ─────────────────────────────────────────────────── */}
-        <section className="relative pt-16 min-h-[72vh] flex items-end overflow-hidden">
-          <Image
-            src="/edited/factory.jpg"
-            alt="מפעל ייצור StayOn"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(12,10,9,0.95) 0%, rgba(12,10,9,0.55) 55%, rgba(12,10,9,0.2) 100%)" }} />
-          <div className="absolute top-16 left-0 right-0 h-0.5" style={{ background: "linear-gradient(90deg, transparent, #CA8A04 30%, #CA8A04 70%, transparent)" }} />
+        <section className="pt-24 pb-16 px-4" style={{ background: "#0C0A09", borderBottom: `3px solid ${GOLD}` }}>
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-14 items-center">
 
-          <div className="relative z-10 max-w-5xl mx-auto px-5 pb-16 w-full">
-            <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: "#c0b090" }}>
-              For Business · סיטונאות
-            </p>
-            <h1
-              className="text-white leading-tight mb-6"
-              style={{ fontSize: "clamp(2.4rem, 6vw, 4.2rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
-            >
-              המוצר שלכם.
-              <br />
-              <span className="gold-shimmer">הלוגו שלכם.</span>
-            </h1>
-            <p className="text-stone-200 text-lg font-bold leading-relaxed max-w-xl mb-8">
-              מטען USB-C חד-פעמי עם המיתוג שלכם. ייצור בסין, אספקה לישראל תוך 3–5 ימי עסקים.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {["מינימום 100 יח׳", "לוגו מותאם", "3–5 ימי אספקה", "Li-ion · מיחזור"].map((t) => (
-                <span
-                  key={t}
-                  className="px-3 py-1.5 text-xs font-black"
-                  style={{ border: "1px solid rgba(160,144,114,0.5)", background: "rgba(160,144,114,0.1)", color: "#c0b090" }}
-                >
-                  {t}
-                </span>
+              {/* TEXT COLUMN */}
+              <div className="text-center md:text-right">
+                <AnimateIn variant="fadeUp" delay={0.05}>
+                  <p className="text-xs font-black tracking-[0.2em] uppercase mb-4" style={{ color: "#c0b090" }}>
+                    For Business · סיטונאות ומיתוג
+                  </p>
+                  <h1
+                    className="text-white leading-tight mb-5"
+                    style={{ fontSize: "clamp(2.4rem, 5vw, 3.8rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
+                  >
+                    מוצר קטן<br />
+                    <span className="gold-shimmer">שקונים בדיוק ברגע שנתקעים.</span>
+                  </h1>
+                </AnimateIn>
+
+                {/* ── מטען במובייל בלבד — בין הכותרת למלל ── */}
+                <AnimateIn variant="fadeIn" delay={0.15} duration={0.9} className="md:hidden mb-6">
+                  <div className="relative flex flex-col items-center">
+                    <div style={{ position: "absolute", top: "45%", left: "50%", transform: "translate(-50%,-50%)", width: "100%", maxWidth: 400, height: 260, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(160,144,114,0.3) 0%, transparent 70%)", filter: "blur(36px)" }} />
+                    <Image
+                      src="/photos/product-clean.png"
+                      alt="StayOn ממותג"
+                      width={480} height={320}
+                      priority
+                      className="w-full h-auto relative z-10"
+                      style={{ filter: "drop-shadow(0 0 40px rgba(160,144,114,0.55)) drop-shadow(0 16px 36px rgba(160,144,114,0.25))" }}
+                    />
+                    {/* תגיות מתחת */}
+                    <div className="relative z-10 grid grid-cols-2 gap-2 w-full mt-3">
+                      {["מינימום 100 יח׳", "לוגו מותאם", "אספקה לפי כמות", "תמיכה ישירה"].map((label) => (
+                        <div key={label} className="flex items-center justify-center px-3 py-2 text-xs font-black text-center" style={{ border: "1px solid rgba(160,144,114,0.4)", background: "rgba(160,144,114,0.08)", color: "#c0b090" }}>
+                          {label}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </AnimateIn>
+
+                <AnimateIn variant="fadeUp" delay={0.22}>
+                  <p className="text-stone-300 text-lg font-bold leading-relaxed mb-8">
+                    לקוחות לא תמיד מגיעים עם מטען נייד — הרבה פעמים הוא נשאר בבית, לא טעון, או שאין כבל.{" "}
+                    <span style={{ color: "#c0b090", fontWeight: 800 }}>StayOn הוא מוצר חירום קטן, נגיש וקל למכירה</span>{" "}
+                    — ליד הקופה, בדלפק, באירועים, בחופים, במסעדות, במלונות ובחנויות.
+                  </p>
+                </AnimateIn>
+
+                <AnimateIn variant="fadeUp" delay={0.3}>
+                  <a
+                    href={WHATSAPP}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold inline-flex items-center gap-3 px-7 py-4 font-bold text-white"
+                    style={{ borderRadius: 0 }}
+                  >
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                    בואו נדבר ב-WhatsApp
+                  </a>
+                </AnimateIn>
+              </div>
+
+              {/* תמונה — דסקטופ בלבד */}
+              <AnimateIn variant="scaleIn" delay={0.15} duration={0.9} className="hidden md:flex justify-center items-center">
+                <div className="relative">
+                  <div className="absolute inset-0 blur-3xl opacity-25" style={{ background: "radial-gradient(ellipse, rgba(160,144,114,0.8), transparent 70%)" }} />
+                  <Image
+                    src="/photos/product-clean.png"
+                    alt="StayOn ממותג"
+                    width={480} height={320}
+                    priority
+                    className="relative z-10 w-[380px] md:w-[440px] h-auto"
+                    style={{ filter: "drop-shadow(0 8px 40px rgba(160,144,114,0.4))" }}
+                  />
+                </div>
+              </AnimateIn>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ── THE PITCH ───────────────────────────────────────────── */}
+        <section className="py-20 px-5 bg-white">
+          <div className="max-w-5xl mx-auto">
+            <AnimateIn variant="fadeUp" className="text-center max-w-3xl mx-auto mb-12">
+              <p className="text-xs font-black tracking-[0.3em] uppercase mb-5" style={{ color: GOLD }}>The Idea</p>
+              <h2
+                className="text-[#0C0A09] leading-tight mb-6"
+                style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
+              >
+                הלקוח לא מחפש מטען —<br />
+                הוא מחפש <span className="gold-text">להמשיך להשתמש בטלפון עכשיו.</span>
+              </h2>
+              <p className="text-stone-600 text-lg font-bold leading-relaxed">
+                StayOn נותן לעסק שלכם מוצר חירום קטן, נגיש וקל למכירה — ליד הקופה, בדלפק, באירועים, בחופים, במסעדות, במלונות ובחנויות. קל למכירה, לא דורש הסבר מסובך.
+              </p>
+            </AnimateIn>
+
+            <StaggerContainer className="grid sm:grid-cols-2 gap-x-8 gap-y-4 max-w-3xl mx-auto" staggerDelay={0.06}>
+              {[
+                "מתאים למכירה ליד קופה / דלפק",
+                "מוצר קטן שלא תופס הרבה מקום במדף",
+                "מתאים לקנייה מהירה ברגע שנתקעים",
+                "לא דורש הסבר מסובך",
+                "זמין ב־USB-C וב־Lightning",
+                "מתאים לחנויות, קיוסקים, ברים, מסעדות, מלונות, חופים, אירועים ואתרי עבודה",
+                "אפשרות למיתוג הקופסה והמטען בתוספת תשלום",
+              ].map((t) => (
+                <StaggerItem key={t}>
+                  <div className="flex items-start gap-3">
+                    <div className="w-5 h-5 shrink-0 flex items-center justify-center mt-0.5" style={{ background: GOLD }}>
+                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                    </div>
+                    <span className="text-stone-700 font-bold text-sm leading-relaxed">{t}</span>
+                  </div>
+                </StaggerItem>
               ))}
+            </StaggerContainer>
+          </div>
+        </section>
+
+        {/* ── CUSTOM BRANDING ─────────────────────────────────────── */}
+        <section className="py-24 px-5 section-wash" style={{ borderTop: "1px solid rgba(160,144,114,0.15)" }}>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Custom Branding</p>
+              <h2 className="text-[#0C0A09] mb-5" style={{ fontSize: "clamp(1.9rem, 4vw, 3rem)", fontWeight: 900, letterSpacing: "-0.025em" }}>
+                מיתוג <span className="gold-text">בהתאמה אישית</span>
+              </h2>
+              <p className="text-stone-600 font-bold leading-relaxed max-w-3xl mx-auto">
+                StayOn יכול להגיע גם כמוצר ממותג בהתאמה אישית — עם לוגו על הקופסה, על המטען עצמו, או על שניהם. מתאים לעסקים, אירועים, כנסים, חתונות, פסטיבלים ומתנות חברה. המיתוג מתבצע בתוספת תשלום ובהתאם לכמות ההזמנה, סוג המיתוג וקובץ העיצוב.
+              </p>
+            </div>
+
+            <AnimateIn variant="fadeIn" className="mb-12">
+              <div className="relative flex justify-center items-center" style={{ minHeight: 280 }}>
+                <div className="absolute pointer-events-none" style={{ width: 560, height: 320, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(160,144,114,0.22) 0%, transparent 68%)", filter: "blur(48px)" }} />
+                <Image
+                  src="/photos/box-branded.png"
+                  alt="קופסת StayOn ממותגת — לוגו זהב ו-QR"
+                  width={760}
+                  height={420}
+                  className="relative z-10 w-full max-w-2xl h-auto object-contain"
+                  style={{ filter: "drop-shadow(0 20px 45px rgba(160,144,114,0.28))" }}
+                />
+              </div>
+              <p className="text-center text-stone-500 text-sm font-bold mt-5">
+                דוגמה: קופסת StayOn ממותגת עם לוגו ו-QR
+              </p>
+            </AnimateIn>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="p-7 bg-white" style={{ border: "1px solid rgba(160,144,114,0.2)" }}>
+                <h3 className="text-[#0C0A09] font-black text-lg mb-4">מיתוג לאירועים</h3>
+                <p className="text-stone-600 text-sm font-semibold leading-relaxed mb-5">
+                  באירועים, כנסים, חתונות, פסטיבלים והשקות — StayOn יכול להפוך למתנה שימושית וממותגת לאורחים. החלק העליון של הקופסה נשאר נקי ויכול לשמש למיתוג אישי בתוספת תשלום: לוגו, שם האירוע, תאריך, מסר קצר או עיצוב מותאם. בנוסף, ניתן למתג גם את המטען עצמו בתוספת תשלום.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    "מתאים לחתונות, כנסים, פסטיבלים והשקות",
+                    "אפשרות למיתוג הקופסה",
+                    "אפשרות למיתוג המטען עצמו",
+                    "מתאים כמתנה שימושית לאורחים",
+                    "זמין ב־USB-C וב־Lightning",
+                  ].map((t) => (
+                    <li key={t} className="flex items-center gap-3">
+                      <div className="w-5 h-5 shrink-0 flex items-center justify-center" style={{ background: GOLD }}>
+                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                      </div>
+                      <span className="text-stone-700 font-bold text-sm">{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="p-7 bg-white" style={{ border: "1px solid rgba(160,144,114,0.2)" }}>
+                <h3 className="text-[#0C0A09] font-black text-lg mb-4">מיתוג לעסקים וחברות</h3>
+                <p className="text-stone-600 text-sm font-semibold leading-relaxed mb-5">
+                  לעסקים, StayOn הוא לא רק מוצר טעינה — הוא נקודת מפגש בין צורך אמיתי לבין המותג שלכם. ניתן למתג את הקופסה בתוספת תשלום, כולל לוגו, צבעי מותג או מסר שיווקי קצר. בנוסף, ניתן למתג גם את המטענים עצמם, כך שהמותג שלכם מופיע גם בזמן השימוש.
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    "מתאים לחנויות, מלונות, ברים, מסעדות, מועדונים וחברות",
+                    "מתאים לאתרי עבודה, קבלנים ואנשי מקצוע",
+                    "אפשרות למיתוג הקופסה",
+                    "אפשרות למיתוג המטען עצמו",
+                    "מתאים למכירה, חלוקה ללקוחות או מתנות חברה",
+                    "זמין ב־USB-C וב־Lightning",
+                  ].map((t) => (
+                    <li key={t} className="flex items-center gap-3">
+                      <div className="w-5 h-5 shrink-0 flex items-center justify-center" style={{ background: GOLD }}>
+                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                      </div>
+                      <span className="text-stone-700 font-bold text-sm">{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
 
         {/* ── WHY STAYON ──────────────────────────────────────────── */}
-        <section className="py-24 px-5 bg-white">
+        <section className="py-24 px-5 section-cream">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Why StayOn</p>
@@ -103,12 +275,42 @@ export default function WholesalePage() {
             </div>
             <div className="grid md:grid-cols-3 gap-4">
               {[
-                { icon: ICONS.tag,     title: "מיתוג מלא",       desc: "הלוגו, הצבעים והמסר שלכם על המוצר. כל לקוח שמשתמש — רואה אתכם.", en: "Full custom branding" },
-                { icon: ICONS.bolt,    title: "חוויית לקוח",     desc: "לקוח שנשאר עם סוללה — נשאר אצלכם. ערך פרקטי אמיתי.", en: "Real value & loyalty" },
-                { icon: ICONS.cube,    title: "לוגיסטיקה פשוטה", desc: "אחסון עד 3 שנים, לא צריך חשמל לתצוגה. ממש plug-and-sell.", en: "Zero infrastructure" },
-                { icon: ICONS.recycle, title: "הכנסה חוזרת",     desc: "מוצר מתכלה = מכירות חוזרות. מי שנשאר על 1% יחזור שוב.", en: "Repeat purchase model" },
-                { icon: ICONS.globe,   title: "אחריות סביבתית",  desc: "Li-ion מוסמך לפח מיחזור. ערכי קיימות לצד מכירה.", en: "Recyclable Li-ion" },
-                { icon: ICONS.truck,   title: "אספקה מהירה",     desc: "3–5 ימי עסקים לישראל. מינימום 100 יחידות.", en: "3–5 business days" },
+                {
+                  icon: ICONS.tag,
+                  title: "מיתוג שעובד ברגע האמת",
+                  desc: "הלוגו שלכם מופיע בדיוק כשהלקוח הכי צריך אתכם. לא באנר שמדלגים עליו — חוויה שחרותה בזיכרון.",
+                  en: "Branding at the critical moment",
+                },
+                {
+                  icon: ICONS.bolt,
+                  title: "ערך פרקטי = נאמנות אמיתית",
+                  desc: "לקוח שנתתם לו עוד זמן עם הטלפון בדיוק כשהיה צריך — הוא לקוח שחוזר. לא מתנה — יצירת קשר.",
+                  en: "Real value builds real loyalty",
+                },
+                {
+                  icon: ICONS.cube,
+                  title: "אפס תשתית נדרשת",
+                  desc: "מוכן לשימוש. לא צריך חשמל, תצוגה, טעינה. מניחים על הדלפק — ומוכרים.",
+                  en: "Zero infrastructure. Plug and sell.",
+                },
+                {
+                  icon: ICONS.recycle,
+                  title: "מכירות חוזרות",
+                  desc: "מוצר מתכלה = לקוח שחוזר לקנות. מי שהיה על 1% יחפש אתכם פעם הבאה.",
+                  en: "Repeat purchase model",
+                },
+                {
+                  icon: ICONS.globe,
+                  title: "אחריות סביבתית",
+                  desc: "Li-ion מוסמך — לפח סוללות ייעודי. מוצר שמוכרים בגאווה — גם ערכית וגם עסקית.",
+                  en: "Recyclable · Eco-responsible",
+                },
+                {
+                  icon: ICONS.truck,
+                  title: "אספקה לפי כמות ומיתוג",
+                  desc: "מינימום 100 יחידות. מלאו טופס — ותקבלו הצעת מחיר תוך 24 שעות.",
+                  en: "Lead time by quantity & branding",
+                },
               ].map((item) => (
                 <div
                   key={item.title}
@@ -128,30 +330,36 @@ export default function WholesalePage() {
         </section>
 
         {/* ── IDEAL FOR ──────────────────────────────────────────── */}
-        <section className="py-24 px-5 section-cream">
+        <section className="py-24 px-5 bg-white">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-14 items-center">
+            <div className="grid md:grid-cols-2 gap-14 items-start">
               <div>
                 <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Ideal For</p>
                 <h2
-                  className="text-[#0C0A09] leading-tight mb-8"
+                  className="text-[#0C0A09] leading-tight mb-3"
                   style={{ fontSize: "clamp(1.9rem, 4vw, 2.8rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
                 >
-                  מושלם עבור
+                  מושלם לכל<br />
+                  <span className="gold-text">עסק שרוצה להישמר.</span>
                 </h2>
-                <div className="space-y-3">
+                <p className="text-stone-500 font-bold text-sm mb-8">
+                  בכל מקום שאנשים נמצאים עם טלפון ביד — StayOn הוא הפתרון הנכון.
+                </p>
+                <div className="space-y-4">
                   {[
-                    { icon: ICONS.storefront, label: "קיוסקים ונקודות מכירה", desc: "הכנסה נוספת בנפח קטן" },
-                    { icon: ICONS.home,       label: "בתי מלון ואתרי נופש",   desc: "חוויית אורח ברמה אחרת" },
-                    { icon: ICONS.sparkles,   label: "אולמות ואירועים",        desc: "מתנה לאורחים בלחיצת כפתור" },
-                    { icon: ICONS.plane,      label: "שדות תעופה ותחנות",      desc: "מוצר שאנשים צריכים בדיוק עכשיו" },
-                    { icon: ICONS.building,   label: "בתי חולים ומרפאות",      desc: "ערך אמיתי למטופלים ומשפחות" },
-                    { icon: ICONS.cart,       label: "רשתות קמעונאיות",        desc: "SKU פשוט, רווחיות גבוהה" },
+                    { icon: ICONS.storefront, label: "קיוסקים ונקודות מכירה", desc: "הכנסה נוספת בנפח קטן, ברווח גבוה" },
+                    { icon: ICONS.home,       label: "בתי מלון ואתרי נופש",   desc: "חוויית אורח שזוכרים — ומספרים עליה" },
+                    { icon: ICONS.sparkles,   label: "אולמות ואירועים",        desc: "מתנה לאורחים שתישאר איתם אחרי האירוע" },
+                    { icon: ICONS.plane,      label: "שדות תעופה ותחנות",      desc: "מוצר שאנשים צריכים בדיוק עכשיו — ורוכשים מיד" },
+                    { icon: ICONS.building,   label: "בתי חולים ומרפאות",      desc: "ערך אמיתי למטופלים ולמשפחות בשעת לחץ" },
+                    { icon: ICONS.cart,       label: "רשתות קמעונאיות",        desc: "SKU פשוט, אחסון קל, רווחיות גבוהה" },
+                    { icon: ICONS.storefront, label: "ברים, מסעדות ומועדונים", desc: "פתרון מיידי ללקוחות שנשארו בלי סוללה" },
+                    { icon: ICONS.building,   label: "אתרי עבודה וקבלנים",     desc: "הטלפון חייב להישאר ביד — לשיחות, תמונות ותיאומים" },
                   ].map((item) => (
-                    <div key={item.label} className="flex items-start gap-4">
+                    <div key={item.label} className="flex items-start gap-4 p-4" style={{ border: "1px solid rgba(160,144,114,0.12)", background: "#faf9f7" }}>
                       <div
-                        className="w-10 h-10 shrink-0 flex items-center justify-center bg-white"
-                        style={{ border: "1px solid rgba(160,144,114,0.25)", color: GOLD }}
+                        className="w-10 h-10 shrink-0 flex items-center justify-center"
+                        style={{ background: "rgba(160,144,114,0.1)", border: "1px solid rgba(160,144,114,0.2)", color: GOLD }}
                       >
                         <Icon d={item.icon} className="w-5 h-5" />
                       </div>
@@ -163,21 +371,26 @@ export default function WholesalePage() {
                   ))}
                 </div>
               </div>
-              <div className="relative">
-                <Image
-                  src="/edited/hero-composite.jpg"
-                  alt="StayOn branded product"
-                  width={560}
-                  height={420}
-                  className="w-full object-cover"
-                  style={{ boxShadow: "12px 16px 0 rgba(160,144,114,0.15)" }}
-                />
+
+              <div className="md:sticky md:top-24">
+                <div className="relative mb-6">
+                  <Image
+                    src="/photos/studio-1.png"
+                    alt="StayOn branded product"
+                    width={560}
+                    height={420}
+                    className="w-full object-cover"
+                    style={{ boxShadow: "12px 16px 0 rgba(160,144,114,0.15)", border: "1px solid rgba(160,144,114,0.1)" }}
+                  />
+                </div>
                 <div
-                  className="absolute bottom-0 left-0 right-0 p-5 text-white"
-                  style={{ background: "linear-gradient(to top, rgba(12,10,9,0.85), transparent)" }}
+                  className="p-5"
+                  style={{ background: "#0C0A09", borderLeft: `4px solid ${GOLD}` }}
                 >
-                  <p className="font-black">StayOn — הלוגו שלכם עליו</p>
-                  <p className="text-stone-300 text-sm font-semibold">Custom branding on every unit</p>
+                  <p className="text-white font-black mb-1">הלוגו שלכם. בכל מוצר.</p>
+                  <p className="text-stone-400 text-sm font-semibold">
+                    כל יחידה היא שטח פרסום שנמצא על הלקוח — ממש בכיס שלו.
+                  </p>
                 </div>
               </div>
             </div>
@@ -192,14 +405,15 @@ export default function WholesalePage() {
               className="text-[#0C0A09] mb-14"
               style={{ fontSize: "clamp(1.9rem, 4vw, 3rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
             >
-              איך זה עובד
+              מבקשה להזמנה —{" "}
+              <span className="gold-text">ב-4 צעדים פשוטים.</span>
             </h2>
             <div className="grid md:grid-cols-4 gap-5">
               {[
-                { num: "1", title: "שלחו בקשה",    desc: "מלאו טופס או WhatsApp" },
-                { num: "2", title: "הצעת מחיר",    desc: "תוך 24 שעות" },
-                { num: "3", title: "אישור מיתוג",  desc: "לוגו ופרטי ייצור" },
-                { num: "4", title: "אספקה",         desc: "3–5 ימי עסקים" },
+                { num: "1", title: "שלחו בקשה", desc: "טופס קצר או הודעת WhatsApp" },
+                { num: "2", title: "הצעת מחיר", desc: "תוך 24 שעות — מותאמת אישית" },
+                { num: "3", title: "מיתוג ואישור", desc: "לוגו, צבעים, פרטי הדפסה" },
+                { num: "4", title: "אספקה", desc: "לפי כמות ומיתוג — עד אליכם" },
               ].map((step, i) => (
                 <div key={step.num} className="relative flex flex-col items-center text-center">
                   {i < 3 && (
@@ -233,17 +447,19 @@ export default function WholesalePage() {
                   className="text-[#0C0A09] leading-tight mb-6"
                   style={{ fontSize: "clamp(1.9rem, 4vw, 2.8rem)", fontWeight: 900, letterSpacing: "-0.025em" }}
                 >
-                  בקשו<br />הצעת מחיר
+                  בקשו<br />
+                  <span className="gold-text">הצעת מחיר</span>
                 </h2>
                 <p className="text-stone-700 font-bold leading-relaxed mb-8">
-                  מלאו את הטופס ונחזור אליכם תוך 24 שעות עם הצעה מותאמת.
+                  מלאו את הטופס ונחזור אליכם תוך 24 שעות עם הצעה מותאמת לכמות ולמיתוג שלכם.
                 </p>
                 <div className="space-y-3 mb-10">
                   {[
-                    "מינימום 100 יחידות",
-                    "לוגו ומיתוג מותאם אישית",
-                    "אספקה תוך 3–5 ימי עסקים",
-                    "תמיכה ישירה מהיצרן",
+                    "מינימום 100 יחידות בלבד",
+                    "מיתוג הקופסה, המטען עצמו, או שניהם — בתוספת תשלום",
+                    "זמין ב-USB-C ו-Lightning",
+                    "אספקה לפי כמות ומיתוג",
+                    "תמיכה ישירה — לא call center",
                   ].map((t) => (
                     <div key={t} className="flex items-center gap-3">
                       <div className="w-5 h-5 shrink-0 flex items-center justify-center" style={{ background: GOLD }}>
@@ -259,7 +475,7 @@ export default function WholesalePage() {
                   className="p-5 bg-white"
                   style={{ border: "1px solid rgba(160,144,114,0.25)" }}
                 >
-                  <p className="text-stone-600 font-bold text-sm mb-3">מעדיפים לדבר ישירות?</p>
+                  <p className="text-stone-600 font-bold text-sm mb-3">מעדיפים לדבר ישירות? אנחנו כאן.</p>
                   <a
                     href={WHATSAPP}
                     target="_blank"

@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "StayOn — חיברת. תישאר מחובר.",
-  description: "מטען USB-C חד-פעמי שנכנס לכיס ומציל את היום. סרקת את הQR? ברוך הבא.",
+  description: "פתרון טעינת חירום קטן ונגיש שנכנס לכיס ומציל את הרגע. סרקת את ה-QR? ברוך הבא.",
   openGraph: {
     title: "StayOn — חיברת. תישאר מחובר.",
-    description: "מטען USB-C חד-פעמי שנכנס לכיס ומציל את היום.",
+    description: "פתרון טעינת חירום קטן ונגיש שנכנס לכיס ומציל את הרגע.",
     url: "https://stayon.co.il/qr",
     siteName: "StayOn",
   },

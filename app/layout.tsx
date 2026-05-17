@@ -12,9 +12,9 @@ const heebo = Heebo({
 });
 
 export const metadata: Metadata = {
-  title: "StayOn — מטען חירום חד-פעמי לעסקים",
+  title: "StayOn — פתרון טעינת חירום נייד",
   description:
-    "מטען USB-C חד-פעמי ממותג לעסקים. טעינה מיידית, בלי כבלים, עם הלוגו שלכם. מינימום 100 יחידות, אספקה תוך 3-5 ימים.",
+    "StayOn — מותג ישראלי לטעינת חירום ניידת. פתרון קטן, יפה ונגיש לרגעים שאין כבל ואין שקע קרוב. זמין ב־USB-C וב־Lightning. מתאים לעסקים, אירועים ונקודות מכירה.",
 };
 
 export default function RootLayout({

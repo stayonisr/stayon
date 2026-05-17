@@ -113,7 +113,7 @@ export default function QRPage() {
         >
           <Image
             src="/charger.png"
-            alt="StayOn מטען USB-C חד-פעמי"
+            alt="StayOn — מטען חירום נייד"
             width={280}
             height={120}
             priority
@@ -156,7 +156,7 @@ export default function QRPage() {
           className="text-stone-500 font-semibold leading-relaxed max-w-[270px]"
           style={{ fontSize: "1rem" }}
         >
-          מה שנמצא בידיים שלך הציל אותך היום.
+          מה שנמצא בידיים שלך נתן לך עוד זמן היום.
           <br />
           תדאג שזה יקרה שוב.
         </motion.p>
@@ -167,7 +167,7 @@ export default function QRPage() {
           transition={{ delay: 0.56, duration: 0.5 }}
           className="text-stone-400 text-xs font-semibold tracking-wide mt-3"
         >
-          USB-C · 1,500 mAh · אחסון 3 שנים
+          USB-C ו-Lightning · 1,500 mAh · מוכן לשימוש
         </motion.p>
       </section>
 
@@ -253,7 +253,7 @@ export default function QRPage() {
           >
             למי שיודע
             <br />
-            שזה הציל אותם.
+            שזה היה שם ברגע הנכון.
           </h2>
 
           <p className="text-stone-400 font-semibold text-sm leading-relaxed mb-8 relative z-10 max-w-[260px]">
@@ -302,7 +302,7 @@ export default function QRPage() {
           />
         </Link>
         <p className="text-stone-600 text-xs font-semibold">
-          © {new Date().getFullYear()} StayOn · Made in China · Designed in Israel
+          © {new Date().getFullYear()} StayOn · מותג ישראלי
         </p>
       </footer>
     </main>
