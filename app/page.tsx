@@ -454,14 +454,9 @@ export default function HomePage() {
                   <p className="text-stone-300 font-semibold leading-relaxed mb-8 flex-1">
                     סיטונאות, מיתוג הקופסה והמטען, ומתנות לאירועים — הכול בדף העסקים, כולל הצעת מחיר.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <Link href="/wholesale" className="btn-gold inline-flex items-center justify-center px-7 py-4 font-black text-white" style={{ borderRadius: 0 }}>
-                      לעסקים, סיטונאות ומיתוג
-                    </Link>
-                    <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-outline-gold inline-flex items-center justify-center px-7 py-4 font-black cursor-pointer" style={{ borderRadius: 0, borderColor: GOLD }}>
-                      WhatsApp
-                    </a>
-                  </div>
+                  <Link href="/wholesale" className="btn-gold flex items-center justify-center w-full px-7 py-4 font-black text-white text-center" style={{ borderRadius: 0 }}>
+                    לעסקים, סיטונאות ומיתוג
+                  </Link>
                 </div>
               </AnimateIn>
             </div>
