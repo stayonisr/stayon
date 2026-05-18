@@ -1,23 +1,25 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-
 interface MarqueeProps {
   items: string[];
-  speed?: number; // seconds for one full loop
+  speed?: number; // seconds for one item-set to travel the viewport
   className?: string;
   separator?: string;
   style?: React.CSSProperties;
 }
 
-// How many times to repeat the item set per half. Enough so a single
-// half is always wider than the viewport (so the band is never empty).
+// Repeat the set this many times per half so a single half is always
+// far wider than the viewport -> the band is never empty.
 const REPEAT = 4;
 
 /**
- * Infinite horizontal marquee — GPU-accelerated via GSAP.
- * Renders two identical halves so the loop is perfectly seamless.
+ * Infinite horizontal marquee — pure CSS conveyor.
+ *
+ * The track holds two identical halves. A CSS keyframe slides it from
+ * translateX(0) to translateX(-50%): the moment the first half has
+ * fully exited left, the second (identical) half sits exactly where
+ * the first began, so the loop restarts on a pixel-identical frame —
+ * perfectly seamless, always full. No JS, no measurement, no GSAP.
+ * dir="ltr" keeps the track left-anchored so nothing empties on the
+ * right even though the site is RTL.
  */
 export function Marquee({
   items,
@@ -26,36 +28,34 @@ export function Marquee({
   separator = "·",
   style,
 }: MarqueeProps) {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const animRef = useRef<gsap.core.Tween | null>(null);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    // Measurement-free seamless loop. The track holds two identical
-    // halves; translating by exactly -50% lands the second half where
-    // the first began -> perfectly continuous, content always on screen.
-    // No scrollWidth reads (which can be 0 before fonts load -> NaN).
-    animRef.current = gsap.fromTo(
-      track,
-      { xPercent: 0 },
-      { xPercent: -50, duration: speed * REPEAT, ease: "none", repeat: -1 }
-    );
-
-    return () => {
-      animRef.current?.kill();
-    };
-  }, [speed]);
-
-  // Repeat the set enough times that a single half always overflows the
-  // viewport (even on narrow phones) -> the band is never empty.
   const oneHalf = Array.from({ length: REPEAT }, () => items).flat();
   const allItems = [...oneHalf, ...oneHalf];
+  const duration = speed * REPEAT;
 
   return (
-    <div className={`overflow-hidden ${className}`} style={style} aria-hidden="true">
-      <div ref={trackRef} className="flex whitespace-nowrap will-change-transform">
+    <div
+      dir="ltr"
+      className={`overflow-hidden ${className}`}
+      style={style}
+      aria-hidden="true"
+    >
+      <style>{`
+        @keyframes stayon-marquee {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+        .stayon-marquee-track {
+          display: flex;
+          width: max-content;
+          white-space: nowrap;
+          will-change: transform;
+          animation: stayon-marquee ${duration}s linear infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .stayon-marquee-track { animation: none; }
+        }
+      `}</style>
+      <div className="stayon-marquee-track">
         {allItems.map((item, i) => (
           <span key={i} className="flex items-center shrink-0">
             <span>{item}</span>
