@@ -29,18 +29,15 @@ export function Marquee({
     const track = trackRef.current;
     if (!track) return;
 
-    // Width of one "set" (half the total, since we duplicate)
-    const halfW = track.scrollWidth / 2;
-
-    animRef.current = gsap.to(track, {
-      x: -halfW,
-      duration: speed,
-      ease: "none",
-      repeat: -1,
-      modifiers: {
-        x: gsap.utils.unitize((x) => parseFloat(x) % halfW),
-      },
-    });
+    // Measurement-free seamless loop: the track holds the items twice,
+    // so translating it by exactly -50% of its own width lands the
+    // second copy precisely where the first started. No scrollWidth
+    // reads (which can be 0 before fonts load on mobile -> NaN).
+    animRef.current = gsap.fromTo(
+      track,
+      { xPercent: 0 },
+      { xPercent: -50, duration: speed, ease: "none", repeat: -1 }
+    );
 
     return () => {
       animRef.current?.kill();
