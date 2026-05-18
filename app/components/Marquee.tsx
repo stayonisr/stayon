@@ -11,9 +11,13 @@ interface MarqueeProps {
   style?: React.CSSProperties;
 }
 
+// How many times to repeat the item set per half. Enough so a single
+// half is always wider than the viewport (so the band is never empty).
+const REPEAT = 4;
+
 /**
  * Infinite horizontal marquee — GPU-accelerated via GSAP.
- * Renders items twice so the loop is seamless.
+ * Renders two identical halves so the loop is perfectly seamless.
  */
 export function Marquee({
   items,
@@ -29,14 +33,14 @@ export function Marquee({
     const track = trackRef.current;
     if (!track) return;
 
-    // Measurement-free seamless loop: the track holds the items twice,
-    // so translating it by exactly -50% of its own width lands the
-    // second copy precisely where the first started. No scrollWidth
-    // reads (which can be 0 before fonts load on mobile -> NaN).
+    // Measurement-free seamless loop. The track holds two identical
+    // halves; translating by exactly -50% lands the second half where
+    // the first began -> perfectly continuous, content always on screen.
+    // No scrollWidth reads (which can be 0 before fonts load -> NaN).
     animRef.current = gsap.fromTo(
       track,
       { xPercent: 0 },
-      { xPercent: -50, duration: speed, ease: "none", repeat: -1 }
+      { xPercent: -50, duration: speed * REPEAT, ease: "none", repeat: -1 }
     );
 
     return () => {
@@ -44,7 +48,10 @@ export function Marquee({
     };
   }, [speed]);
 
-  const allItems = [...items, ...items]; // duplicate for seamless loop
+  // Repeat the set enough times that a single half always overflows the
+  // viewport (even on narrow phones) -> the band is never empty.
+  const oneHalf = Array.from({ length: REPEAT }, () => items).flat();
+  const allItems = [...oneHalf, ...oneHalf];
 
   return (
     <div className={`overflow-hidden ${className}`} style={style} aria-hidden="true">
