@@ -17,8 +17,9 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <div className="flex items-center gap-3 mb-6">
               <Image src="/logo.png" alt="StayOn" width={100} height={36} loading="eager" className="object-contain h-9 w-auto brightness-0 invert" />
-              <span className="text-sm font-black tracking-[0.18em] uppercase whitespace-nowrap">
-                <span className="text-stone-300">Stay Powered</span> <span style={{ color: GOLD }}>Stay On</span>
+              <span className="h-8 w-px shrink-0" style={{ background: "rgba(160,144,114,0.35)" }} />
+              <span className="text-[15px] font-bold leading-tight text-stone-300 whitespace-nowrap">
+                להישאר מחובר <span style={{ color: GOLD }}>ברגע האמת</span>
               </span>
             </div>
             <div className="flex items-center gap-3">
@@ -84,9 +85,6 @@ export default function Footer() {
                 </svg>
                 WhatsApp
               </a>
-              <p className="text-stone-500 text-xs text-center md:text-start pt-1">
-                www.stayon.co.il
-              </p>
             </div>
           </div>
         </div>
