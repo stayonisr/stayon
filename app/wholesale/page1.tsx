@@ -75,7 +75,7 @@ export default function WholesalePage() {
                     alt="StayOn — אריזה אטומה, אריזה ממותגת והמטען"
                     width={1000} height={667}
                     priority
-                    className="w-[106%] max-w-none h-auto -mx-[3%]"
+                    className="w-full h-auto"
                   />
                   <div className="grid grid-cols-2 gap-2 w-full mt-4">
                     {["מינימום 100 יח׳", "לוגו מותאם", "אספקה לפי כמות", "תמיכה ישירה"].map((label) => (
@@ -117,7 +117,7 @@ export default function WholesalePage() {
                   alt="StayOn — אריזה אטומה, אריזה ממותגת והמטען"
                   width={1000} height={667}
                   priority
-                  className="w-[128%] max-w-none h-auto md:-ml-10 lg:-ml-16"
+                  className="w-full h-auto"
                 />
               </AnimateIn>
 
