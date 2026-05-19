@@ -159,7 +159,7 @@ export default function WholesalePage() {
                 "לא דורש הסבר מסובך",
                 "זמין ב־USB-C וב־Lightning",
                 "מתאים לחנויות, קיוסקים, ברים, מסעדות, מלונות, חופים, אירועים ואתרי עבודה",
-                "אפשרות למיתוג הקופסה והמטען בתוספת תשלום",
+                "אפשרות למיתוג האריזה הממותגת והמטען בתוספת תשלום",
               ].map((t) => (
                 <StaggerItem key={t}>
                   <div className="flex items-start gap-3">
@@ -182,85 +182,64 @@ export default function WholesalePage() {
             <AnimateIn variant="fadeUp" className="text-center mb-12">
               <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: GOLD }}>Packaging</p>
               <h2 className="text-[#0C0A09] mb-5" style={{ fontSize: "clamp(1.9rem, 4vw, 3rem)", fontWeight: 900, letterSpacing: "-0.025em" }}>
-                שתי אפשרויות <span className="gold-text">אריזה</span>
+                אפשרויות <span className="gold-text">אריזה</span>
               </h2>
               <p className="text-stone-600 font-bold leading-relaxed max-w-2xl mx-auto">
-                בוחרים את האריזה שמתאימה לעסק שלכם — מדף סטנדרטי מהיר, או קרטון ממותג שנושא את המותג שלכם.
+                StayOn זמין בשתי אפשרויות אריזה, בהתאם לאופי השימוש, נקודת המכירה והצורך של העסק.
               </p>
             </AnimateIn>
 
             <div className="grid md:grid-cols-2 gap-6">
-              {/* Poly-bag */}
+              {/* אריזה אטומה */}
               <AnimateIn variant="fadeUp" delay={0.05} className="h-full">
-                <div className="h-full flex flex-col bg-white" style={{ border: "1px solid rgba(160,144,114,0.2)" }}>
-                  <div className="px-6 pt-5 pb-5" style={{ background: "#faf9f7" }}>
-                    <div className="flex justify-end mb-3">
-                      <span className="text-[11px] font-black tracking-wider uppercase px-2.5 py-1 text-stone-600" style={{ border: "1px solid rgba(160,144,114,0.3)" }}>סטנדרטי</span>
-                    </div>
-                    <div className="flex items-center justify-center">
-                      <Image src="/photos/polybag-spread.png" alt="אריזת פוליבאג StayOn — חזית וגב" width={620} height={420} className="w-full max-w-sm h-auto object-contain" style={{ filter: "drop-shadow(0 16px 30px rgba(12,10,9,0.12))" }} />
-                    </div>
+                <div
+                  className="h-full flex flex-col bg-white overflow-hidden"
+                  style={{ borderRadius: 20, border: "1px solid rgba(160,144,114,0.18)", boxShadow: "0 4px 24px rgba(12,10,9,0.06)" }}
+                >
+                  <div className="flex items-center justify-center px-8 pt-8 pb-4" style={{ background: "#faf9f7" }}>
+                    <Image src="/photos/polybag-front.png" alt="אריזה אטומה של StayOn" width={520} height={520} className="w-full max-w-[280px] h-auto object-contain" style={{ filter: "drop-shadow(0 14px 26px rgba(12,10,9,0.10))" }} />
                   </div>
-                  <div className="p-7 flex-1 flex flex-col">
-                    <h3 className="text-[#0C0A09] font-black text-xl mb-2">פוליבאג — אריזת מדף</h3>
-                    <p className="text-stone-600 text-sm font-semibold leading-relaxed mb-5">
-                      אריזה אטומה, קומפקטית ומוכנה למכירה כפי שהיא. הפתרון המהיר והנגיש למדף — בלי מיתוג.
+                  <div className="p-8 flex-1 flex flex-col">
+                    <h3 className="text-[#0C0A09] font-black text-xl md:text-2xl mb-3">אריזה אטומה</h3>
+                    <p className="text-stone-600 text-sm md:text-[15px] font-semibold leading-relaxed">
+                      אריזה סגורה ונקייה עם מיתוג StayOn, מוכנה לשימוש ונוחה לנשיאה. מתאימה למכירה מהירה, חלוקה באירועים, דוכנים, קופות ונקודות שירות — במיוחד כשחשוב שהמוצר יגיע סגור, נקי ומוכן לשימוש.
                     </p>
-                    <ul className="space-y-2.5 mt-auto">
-                      {["אטום ומוכן למכירה מיידית", "קומפקטי — תופס מעט מקום במדף", "ללא אפשרות מיתוג"].map((t) => (
-                        <li key={t} className="flex items-center gap-3">
-                          <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: GOLD }} />
-                          <span className="text-stone-700 font-bold text-sm">{t}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
               </AnimateIn>
 
-              {/* Carton */}
+              {/* אריזה ממותגת */}
               <AnimateIn variant="fadeUp" delay={0.12} className="h-full">
-                <div className="h-full flex flex-col bg-white" style={{ border: `2px solid ${GOLD}` }}>
-                  <div className="px-6 pt-5 pb-5" style={{ background: "#faf9f7" }}>
-                    <div className="flex justify-end mb-3">
-                      <span className="text-[11px] font-black tracking-wider uppercase px-2.5 py-1 text-white" style={{ background: GOLD }}>ניתן למיתוג</span>
-                    </div>
-                    <div className="flex items-center justify-center">
-                      <Image src="/photos/box-spread.png" alt="אריזת קרטון StayOn — כל הפאות כולל החזית הריקה למיתוג" width={620} height={420} className="w-full max-w-sm h-auto object-contain" style={{ filter: "drop-shadow(0 16px 30px rgba(12,10,9,0.12))" }} />
-                    </div>
+                <div
+                  className="h-full flex flex-col bg-white overflow-hidden"
+                  style={{ borderRadius: 20, border: "1px solid rgba(160,144,114,0.18)", boxShadow: "0 4px 24px rgba(12,10,9,0.06)" }}
+                >
+                  <div className="flex items-center justify-center px-8 pt-8 pb-4" style={{ background: "#faf9f7" }}>
+                    <Image src="/photos/box-spread.png" alt="אריזה ממותגת של StayOn — אזור ייעודי להדפסת לוגו" width={620} height={420} className="w-full max-w-sm h-auto object-contain" style={{ filter: "drop-shadow(0 14px 26px rgba(12,10,9,0.10))" }} />
                   </div>
-                  <div className="p-7 flex-1 flex flex-col">
-                    <h3 className="text-[#0C0A09] font-black text-xl mb-2">קרטון — ניתן למיתוג</h3>
-                    <p className="text-stone-600 text-sm font-semibold leading-relaxed mb-5">
-                      לקרטון יש <span style={{ color: GOLD, fontWeight: 800 }}>חזית עליונה ריקה</span> שעליה מדפיסים את הלוגו שלכם. בנוסף — אפשר להוציא את המטען ולמתג גם אותו (בפוליבאג זה אטום).
+                  <div className="p-8 flex-1 flex flex-col">
+                    <h3 className="text-[#0C0A09] font-black text-xl md:text-2xl mb-3">אריזה ממותגת</h3>
+                    <p className="text-stone-600 text-sm md:text-[15px] font-semibold leading-relaxed">
+                      אריזת קרטון עם אזור ייעודי להדפסת לוגו או מיתוג של העסק / האירוע. מתאימה כמתנה ממותגת, מוצר קד״מ, חלוקה באירועים או מכירה בנקודות שבהן רוצים להציג את StayOn בצורה ייחודית, אלגנטית וממותגת.
                     </p>
-                    <ul className="space-y-2.5 mb-6">
-                      {["חזית ריקה להדפסת לוגו / עיצוב מותאם", "אפשרות למתג גם את המטען עצמו", "מושלם לעסקים, אירועים ומתנות חברה"].map((t) => (
-                        <li key={t} className="flex items-center gap-3">
-                          <span className="w-5 h-5 shrink-0 flex items-center justify-center" style={{ background: GOLD }}>
-                            <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                          </span>
-                          <span className="text-stone-700 font-bold text-sm">{t}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <a href="#branding" className="mt-auto inline-flex items-center justify-center px-6 py-3 text-sm font-black text-white self-start" style={{ background: GOLD }}>
-                      פרטי המיתוג המלאים
-                    </a>
                   </div>
                 </div>
               </AnimateIn>
             </div>
 
-            {/* Dual connector strip */}
-            <AnimateIn variant="fadeIn" delay={0.1} className="mt-10">
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 p-6" style={{ background: "#faf9f7", border: "1px solid rgba(160,144,114,0.18)" }}>
-                <Image src="/photos/chargers-duo.png" alt="StayOn — זמין ב-USB-C וב-Lightning" width={420} height={150} className="w-full max-w-xs h-auto object-contain" />
-                <div className="text-center sm:text-start">
-                  <p className="text-[#0C0A09] font-black text-lg mb-1">זמין בשני חיבורים</p>
-                  <p className="text-stone-600 font-semibold text-sm">USB-C ו-Lightning — לפי הדגם. בכל אריזה.</p>
-                </div>
-              </div>
+            <AnimateIn variant="fadeUp" delay={0.1} className="text-center mt-12">
+              <p className="text-stone-700 font-bold leading-relaxed max-w-2xl mx-auto mb-6">
+                רוצים להתאים את StayOn לעסק, אירוע או נקודת מכירה? דברו איתנו ונמצא את אפשרות האריזה המתאימה.
+              </p>
+              <a
+                href={WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-4 text-base font-black text-white"
+                style={{ background: GOLD, borderRadius: 12 }}
+              >
+                דברו איתנו
+              </a>
             </AnimateIn>
           </div>
         </section>
@@ -283,7 +262,7 @@ export default function WholesalePage() {
                 <div className="absolute pointer-events-none" style={{ width: 560, height: 320, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(160,144,114,0.22) 0%, transparent 68%)", filter: "blur(48px)" }} />
                 <Image
                   src="/photos/box-branded.png"
-                  alt="קופסת StayOn ממותגת — לוגו זהב ו-QR"
+                  alt="אריזה ממותגת של StayOn — לוגו ו-QR"
                   width={760}
                   height={420}
                   className="relative z-10 w-full max-w-2xl h-auto object-contain"
@@ -291,7 +270,7 @@ export default function WholesalePage() {
                 />
               </div>
               <p className="text-center text-stone-500 text-sm font-bold mt-5">
-                דוגמה: קופסת StayOn ממותגת עם לוגו ו-QR
+                דוגמה: אריזה ממותגת של StayOn עם לוגו
               </p>
             </AnimateIn>
 
@@ -299,12 +278,12 @@ export default function WholesalePage() {
               <div className="p-7 bg-white" style={{ border: "1px solid rgba(160,144,114,0.2)" }}>
                 <h3 className="text-[#0C0A09] font-black text-lg mb-4">מיתוג לאירועים</h3>
                 <p className="text-stone-600 text-sm font-semibold leading-relaxed mb-5">
-                  באירועים, כנסים, חתונות, פסטיבלים והשקות — StayOn יכול להפוך למתנה שימושית וממותגת לאורחים. החלק העליון של הקופסה נשאר נקי ויכול לשמש למיתוג אישי בתוספת תשלום: לוגו, שם האירוע, תאריך, מסר קצר או עיצוב מותאם. בנוסף, ניתן למתג גם את המטען עצמו בתוספת תשלום.
+                  באירועים, כנסים, חתונות, פסטיבלים והשקות — StayOn יכול להפוך למתנה שימושית וממותגת לאורחים. החלק העליון של האריזה הממותגת נשאר נקי ויכול לשמש למיתוג אישי בתוספת תשלום: לוגו, שם האירוע, תאריך, מסר קצר או עיצוב מותאם. בנוסף, ניתן למתג גם את המטען עצמו בתוספת תשלום.
                 </p>
                 <ul className="space-y-3">
                   {[
                     "מתאים לחתונות, כנסים, פסטיבלים והשקות",
-                    "אפשרות למיתוג הקופסה",
+                    "אפשרות למיתוג האריזה הממותגת",
                     "אפשרות למיתוג המטען עצמו",
                     "מתאים כמתנה שימושית לאורחים",
                     "זמין ב־USB-C וב־Lightning",
@@ -324,13 +303,13 @@ export default function WholesalePage() {
               <div className="p-7 bg-white" style={{ border: "1px solid rgba(160,144,114,0.2)" }}>
                 <h3 className="text-[#0C0A09] font-black text-lg mb-4">מיתוג לעסקים וחברות</h3>
                 <p className="text-stone-600 text-sm font-semibold leading-relaxed mb-5">
-                  לעסקים, StayOn הוא לא רק מוצר טעינה — הוא נקודת מפגש בין צורך אמיתי לבין המותג שלכם. ניתן למתג את הקופסה בתוספת תשלום, כולל לוגו, צבעי מותג או מסר שיווקי קצר. בנוסף, ניתן למתג גם את המטענים עצמם, כך שהמותג שלכם מופיע גם בזמן השימוש.
+                  לעסקים, StayOn הוא לא רק מוצר טעינה — הוא נקודת מפגש בין צורך אמיתי לבין המותג שלכם. ניתן למתג את האריזה הממותגת בתוספת תשלום, כולל לוגו, צבעי מותג או מסר שיווקי קצר. בנוסף, ניתן למתג גם את המטענים עצמם, כך שהמותג שלכם מופיע גם בזמן השימוש.
                 </p>
                 <ul className="space-y-3">
                   {[
                     "מתאים לחנויות, מלונות, ברים, מסעדות, מועדונים וחברות",
                     "מתאים לאתרי עבודה, קבלנים ואנשי מקצוע",
-                    "אפשרות למיתוג הקופסה",
+                    "אפשרות למיתוג האריזה הממותגת",
                     "אפשרות למיתוג המטען עצמו",
                     "מתאים למכירה, חלוקה ללקוחות או מתנות חברה",
                     "זמין ב־USB-C וב־Lightning",
@@ -545,7 +524,7 @@ export default function WholesalePage() {
                 <div className="space-y-3 mb-10">
                   {[
                     "מינימום 100 יחידות בלבד",
-                    "מיתוג הקופסה, המטען עצמו, או שניהם — בתוספת תשלום",
+                    "מיתוג האריזה הממותגת, המטען עצמו, או שניהם — בתוספת תשלום",
                     "זמין ב-USB-C ו-Lightning",
                     "אספקה לפי כמות ומיתוג",
                     "תמיכה ישירה — לא call center",

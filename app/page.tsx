@@ -165,7 +165,7 @@ export default function HomePage() {
         {/* ── MARQUEE BAND ────────────────────────────────────────────── */}
         <div className="py-5 overflow-hidden" style={{ background: "#0C0A09", borderTop: "1px solid rgba(160,144,114,0.2)", borderBottom: "1px solid rgba(160,144,114,0.2)" }}>
           <Marquee
-            items={["Stay Connected", "USB-C ו-Lightning", "2,500 mAh", "Pocket Size", "Emergency Power", "Stay Powered", "Ultra Lightweight", "מוכן מהקופסה", "פתרון טעינה מיידי"]}
+            items={["Stay Connected", "USB-C ו-Lightning", "2,500 mAh", "Pocket Size", "Emergency Power", "Stay Powered", "Ultra Lightweight", "מוכן לשימוש", "פתרון טעינה מיידי"]}
             speed={28} separator="·"
             className="text-sm font-black tracking-[0.2em] uppercase"
             style={{ color: GOLD }}
@@ -454,7 +454,7 @@ export default function HomePage() {
                     למכור או למתג את StayOn?
                   </h3>
                   <p className="text-stone-300 font-semibold leading-relaxed mb-8 flex-1">
-                    סיטונאות, מיתוג הקופסה והמטען, ומתנות לאירועים — הכול בדף העסקים, כולל הצעת מחיר.
+                    סיטונאות, מיתוג האריזה והמטען, ומתנות לאירועים — הכול בדף העסקים, כולל הצעת מחיר.
                   </p>
                   <Link href="/wholesale" className="btn-gold flex items-center justify-center w-full px-7 py-4 font-black text-white text-center" style={{ borderRadius: 0 }}>
                     לעסקים, סיטונאות ומיתוג
