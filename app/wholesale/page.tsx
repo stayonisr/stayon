@@ -193,9 +193,13 @@ export default function WholesalePage() {
               {/* Poly-bag */}
               <AnimateIn variant="fadeUp" delay={0.05} className="h-full">
                 <div className="h-full flex flex-col bg-white" style={{ border: "1px solid rgba(160,144,114,0.2)" }}>
-                  <div className="relative flex items-center justify-center px-6 pt-8 pb-4" style={{ background: "#faf9f7" }}>
-                    <span className="absolute top-4 end-4 text-[11px] font-black tracking-wider uppercase px-2.5 py-1 text-stone-600" style={{ border: "1px solid rgba(160,144,114,0.3)" }}>סטנדרטי</span>
-                    <Image src="/photos/polybag-spread.png" alt="אריזת פוליבאג StayOn — חזית וגב" width={620} height={420} className="w-full max-w-sm h-auto object-contain" style={{ filter: "drop-shadow(0 16px 30px rgba(12,10,9,0.12))" }} />
+                  <div className="px-6 pt-5 pb-5" style={{ background: "#faf9f7" }}>
+                    <div className="flex justify-end mb-3">
+                      <span className="text-[11px] font-black tracking-wider uppercase px-2.5 py-1 text-stone-600" style={{ border: "1px solid rgba(160,144,114,0.3)" }}>סטנדרטי</span>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <Image src="/photos/polybag-spread.png" alt="אריזת פוליבאג StayOn — חזית וגב" width={620} height={420} className="w-full max-w-sm h-auto object-contain" style={{ filter: "drop-shadow(0 16px 30px rgba(12,10,9,0.12))" }} />
+                    </div>
                   </div>
                   <div className="p-7 flex-1 flex flex-col">
                     <h3 className="text-[#0C0A09] font-black text-xl mb-2">פוליבאג — אריזת מדף</h3>
@@ -217,9 +221,13 @@ export default function WholesalePage() {
               {/* Carton */}
               <AnimateIn variant="fadeUp" delay={0.12} className="h-full">
                 <div className="h-full flex flex-col bg-white" style={{ border: `2px solid ${GOLD}` }}>
-                  <div className="relative flex items-center justify-center px-6 pt-8 pb-4" style={{ background: "#faf9f7" }}>
-                    <span className="absolute top-4 end-4 text-[11px] font-black tracking-wider uppercase px-2.5 py-1 text-white" style={{ background: GOLD }}>ניתן למיתוג</span>
-                    <Image src="/photos/box-spread.png" alt="אריזת קרטון StayOn — כל הפאות כולל החזית הריקה למיתוג" width={620} height={420} className="w-full max-w-sm h-auto object-contain" style={{ filter: "drop-shadow(0 16px 30px rgba(12,10,9,0.12))" }} />
+                  <div className="px-6 pt-5 pb-5" style={{ background: "#faf9f7" }}>
+                    <div className="flex justify-end mb-3">
+                      <span className="text-[11px] font-black tracking-wider uppercase px-2.5 py-1 text-white" style={{ background: GOLD }}>ניתן למיתוג</span>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <Image src="/photos/box-spread.png" alt="אריזת קרטון StayOn — כל הפאות כולל החזית הריקה למיתוג" width={620} height={420} className="w-full max-w-sm h-auto object-contain" style={{ filter: "drop-shadow(0 16px 30px rgba(12,10,9,0.12))" }} />
+                    </div>
                   </div>
                   <div className="p-7 flex-1 flex flex-col">
                     <h3 className="text-[#0C0A09] font-black text-xl mb-2">קרטון — ניתן למיתוג</h3>
