@@ -68,26 +68,21 @@ export default function WholesalePage() {
                   </h1>
                 </AnimateIn>
 
-                {/* ── מטען במובייל בלבד — בין הכותרת למלל ── */}
+                {/* ── תמונת showcase במובייל — בין הכותרת למלל ── */}
                 <AnimateIn variant="fadeIn" delay={0.15} duration={0.9} className="md:hidden mb-6">
-                  <div className="relative flex flex-col items-center">
-                    <div style={{ position: "absolute", top: "45%", left: "50%", transform: "translate(-50%,-50%)", width: "100%", maxWidth: 400, height: 260, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(160,144,114,0.3) 0%, transparent 70%)", filter: "blur(36px)" }} />
-                    <Image
-                      src="/photos/product-clean.png"
-                      alt="StayOn ממותג"
-                      width={480} height={320}
-                      priority
-                      className="w-full h-auto relative z-10"
-                      style={{ filter: "drop-shadow(0 0 40px rgba(160,144,114,0.55)) drop-shadow(0 16px 36px rgba(160,144,114,0.25))" }}
-                    />
-                    {/* תגיות מתחת */}
-                    <div className="relative z-10 grid grid-cols-2 gap-2 w-full mt-3">
-                      {["מינימום 100 יח׳", "לוגו מותאם", "אספקה לפי כמות", "תמיכה ישירה"].map((label) => (
-                        <div key={label} className="flex items-center justify-center px-3 py-2 text-xs font-black text-center" style={{ border: "1px solid rgba(160,144,114,0.4)", background: "rgba(160,144,114,0.08)", color: "#c0b090" }}>
-                          {label}
-                        </div>
-                      ))}
-                    </div>
+                  <Image
+                    src="/photos/wholesale-hero.png"
+                    alt="StayOn — אריזה אטומה, אריזה ממותגת והמטען"
+                    width={1000} height={667}
+                    priority
+                    className="w-full h-auto"
+                  />
+                  <div className="grid grid-cols-2 gap-2 w-full mt-4">
+                    {["מינימום 100 יח׳", "לוגו מותאם", "אספקה לפי כמות", "תמיכה ישירה"].map((label) => (
+                      <div key={label} className="flex items-center justify-center px-3 py-2 text-xs font-black text-center" style={{ border: "1px solid rgba(160,144,114,0.4)", background: "rgba(160,144,114,0.08)", color: "#c0b090" }}>
+                        {label}
+                      </div>
+                    ))}
                   </div>
                 </AnimateIn>
 
@@ -115,19 +110,15 @@ export default function WholesalePage() {
                 </AnimateIn>
               </div>
 
-              {/* תמונה — דסקטופ בלבד */}
+              {/* תמונת showcase — דסקטופ בלבד */}
               <AnimateIn variant="scaleIn" delay={0.15} duration={0.9} className="hidden md:flex justify-center items-center">
-                <div className="relative">
-                  <div className="absolute inset-0 blur-3xl opacity-25" style={{ background: "radial-gradient(ellipse, rgba(160,144,114,0.8), transparent 70%)" }} />
-                  <Image
-                    src="/photos/product-clean.png"
-                    alt="StayOn ממותג"
-                    width={480} height={320}
-                    priority
-                    className="relative z-10 w-[380px] md:w-[440px] h-auto"
-                    style={{ filter: "drop-shadow(0 8px 40px rgba(160,144,114,0.4))" }}
-                  />
-                </div>
+                <Image
+                  src="/photos/wholesale-hero.png"
+                  alt="StayOn — אריזה אטומה, אריזה ממותגת והמטען"
+                  width={1000} height={667}
+                  priority
+                  className="w-full h-auto"
+                />
               </AnimateIn>
 
             </div>
