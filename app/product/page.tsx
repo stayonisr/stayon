@@ -281,15 +281,22 @@ export default function ProductPage() {
               </p>
             </AnimateIn>
             <StaggerContainer className="grid grid-cols-3 md:grid-cols-6 gap-3" staggerDelay={0.08}>
-              {[1, 2, 3, 4, 5, 6].map((n) => (
-                <StaggerItem key={n}>
+              {[
+                { src: "/photos/chargers-duo.png", alt: "StayOn — זמין ב-USB-C וב-Lightning" },
+                { src: "/renders/1.png", alt: "StayOn — חזית" },
+                { src: "/renders/3.png", alt: "StayOn — זווית 3/4" },
+                { src: "/renders/4.png", alt: "StayOn — זווית אנכית" },
+                { src: "/renders/5.png", alt: "StayOn — זווית נמוכה" },
+                { src: "/renders/6.png", alt: "StayOn — גב" },
+              ].map((img) => (
+                <StaggerItem key={img.src}>
                   <div
                     className="relative aspect-square overflow-hidden group cursor-pointer"
                     style={{ background: "#f8f7f5", border: "1px solid rgba(160,144,114,0.15)" }}
                   >
                     <Image
-                      src={`/renders/${n}.png`}
-                      alt={`StayOn זווית ${n}`}
+                      src={img.src}
+                      alt={img.alt}
                       fill
                       className="object-contain p-2 transition-transform duration-500 group-hover:scale-110"
                     />

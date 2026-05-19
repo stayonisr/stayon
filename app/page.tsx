@@ -311,6 +311,8 @@ export default function HomePage() {
                 <ProductGallery
                   objectFit="contain" aspectRatio="4/3" thumbSize={56}
                   images={[
+                    { src: "/photos/box-front.png", alt: "StayOn — המוצר באריזת הקרטון" },
+                    { src: "/photos/chargers-duo.png", alt: "StayOn — זמין ב-USB-C וב-Lightning" },
                     { src: "/renders/1.png", alt: "StayOn — חזית" },
                     { src: "/renders/2.png", alt: "StayOn — חזית עם ברנדינג" },
                     { src: "/renders/3.png", alt: "StayOn — זווית 3/4" },
